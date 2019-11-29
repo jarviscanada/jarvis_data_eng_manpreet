@@ -20,7 +20,6 @@ cpu_mhz=$(sudo cat /proc/cpuinfo | grep 'cpu MHz' | uniq | awk '{print $4}' )
 #save L2 Cache
 L2_cache=$(echo "$lscpu_out" | grep 'L2 cache' | awk '{print $3}' | sed 's/K//')
 
-
 #save total memory
 total_mem=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 
