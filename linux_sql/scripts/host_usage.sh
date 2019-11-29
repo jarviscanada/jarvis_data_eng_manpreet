@@ -18,7 +18,7 @@ disk_io=$(( $disk_bi+$disk_bo ))
 #save disk_available
 disk_available=$(df | awk '{sum+=$4} END {print sum}')
 #timestamp
-timestamp=$(date -d @1332468005 '+%Y-%m-%d %H:%M:%S')
+timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 #Set the value of variable
 database=$3
 host_id=`PGPASSWORD=$5 psql -X -A -d $database -U "postgres" -h $1 -p $2 -t -c "SELECT id FROM host_info WHERE hostname='$host_name'"`
