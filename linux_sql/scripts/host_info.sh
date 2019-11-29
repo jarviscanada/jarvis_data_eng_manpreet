@@ -30,20 +30,19 @@ timestamp=$(date -d @1332468005 '+%Y-%m-%d %H:%M:%S')
 #Set the value of variable
 database=$3
 
-echo "Hostname: $hostname "
-echo "CPU number: $cpu_number "
-echo "CPU Architecture: $cpu_architecture "
-echo "CPU Model: $cpu_model "
-echo "CPU MHZ: $cpu_mhz "
-echo "L2 cache: $L2_cache "
-echo "Total memory: $total_mem "
-echo "Timestamp: $timestamp "
-
+echo "Hostname: $hostname"
+echo "CPU number: $cpu_number"
+echo "CPU Architecture: $cpu_architecture"
+echo "CPU Model: $cpu_model"
+echo "CPU MHZ: $cpu_mhz"
+echo "L2 cache: $L2_cache"
+echo "Total memory: $total_mem"
+echo "Timestamp: $timestamp"
 
 PGPASSWORD=$5 psql -h $1 -p $2 -d $database -U $4 << EOF 
 INSERT INTO host_info(hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, timestamp)
 VALUES
    ('$hostname', $cpu_number, '$cpu_architecture', '$cpu_model', $cpu_mhz, $L2_cache, $total_mem, '$timestamp');
 EOF
-exit 0
 
+exit 0
