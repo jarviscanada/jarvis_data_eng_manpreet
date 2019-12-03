@@ -1,5 +1,19 @@
 #!/bin/bash
 
+#set Command line arguments
+psql_host=$1
+psql_port=$2    
+db_name=$3      
+psql_user=$4    
+psql_password=$5
+
+if [[ $# -lt 1 || $# -gt 5 ]]; then
+	echo "Invalid number of arguments
+	For ex: ./host_info.sh <host> <port> <database_name> <username> <password>"
+	exit 1
+fi
+
+
 #save hostname to a variable
 hostname=$(hostname -f)
 
@@ -27,7 +41,6 @@ total_mem=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 timestamp=$(date -d @1332468005 '+%Y-%m-%d %H:%M:%S')
 
 #Set the value of variable
-database=$3
 
 echo "Hostname: $hostname"
 echo "CPU number: $cpu_number"
@@ -38,10 +51,17 @@ echo "L2 cache: $L2_cache"
 echo "Total memory: $total_mem"
 echo "Timestamp: $timestamp"
 
-PGPASSWORD=$5 psql -h $1 -p $2 -d $database -U $4 << EOF 
+PGPASSWORD=$psql_password psql -h $psql_host -p $psql_port -d $db_name -U $psql_user<<EOF
 INSERT INTO host_info(hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, timestamp)
 VALUES
    ('$hostname', $cpu_number, '$cpu_architecture', '$cpu_model', $cpu_mhz, $L2_cache, $total_mem, '$timestamp');
 EOF
+
+psql_exit_status=$?
+
+if [ $psql_exit_status != 0 ]; then
+    echo "psql failed while trying to run this sql script"
+    exit $psql_exit_status
+fi
 
 exit 0
