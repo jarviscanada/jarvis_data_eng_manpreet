@@ -1,4 +1,12 @@
 #!/bin/bash
+
+#set Command line arguments
+psql_host=$1
+psql_port=$2    
+db_name=$3      
+psql_user=$4    
+psql_password=$5
+
 #save hostid variable
 host_name=$(hostname -f)
 #save memory_free to a variable
@@ -20,8 +28,8 @@ disk_available=$(df | awk '{sum+=$4} END {print sum}')
 #timestamp
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 #Set the value of variable
-database=$3
-host_id=`PGPASSWORD=$5 psql -X -A -d $database -U "postgres" -h $1 -p $2 -t -c "SELECT id FROM host_info WHERE hostname='$host_name'"`
+
+host_id=`PGPASSWORD=$psql_password psql -X -A -d $db_name -U "postgres" -h $psql_host  -p $psql_port -t -c "SELECT id FROM host_info WHERE hostname='$host_name'"`
 
 echo "host_id: $host_id "
 echo "memory_free: $memory_free "
@@ -30,9 +38,11 @@ echo "cpu_kernel: $cpu_kernel "
 echo "disk_io: $disk_io "
 echo "disk_available: $disk_available "
 echo "Timestamp: $timestamp "
-PGPASSWORD=$5 psql -h $1 -p $2 -d $database -U $4 << EOF 
+
+PGPASSWORD=$psql_password psql -h $psql_host -p $psql_port -d $db_name -U $psql_user << EOF 
 INSERT INTO host_usage(host_id, memory_free, cpu_idel, cpu_kernel, disk_io, disk_available, timestamp)
 VALUES
    ('$host_id', $memory_free, '$cpu_idle', '$cpu_kernel', $disk_io, $disk_available, '$timestamp');
 EOF
+
 exit 0
