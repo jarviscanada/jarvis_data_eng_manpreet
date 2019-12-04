@@ -5,7 +5,7 @@ The Linux Cluster Administration (LCA) team manages a Linux cluster of 10 nodes/
 The LCA team needs to record the hardware specifications of each node and monitor node resource usages (e.g. CPU/Memory) in realtime (see appendix A). The collected data should be stored in an RDBMS database. LCA team will use the data to generate some reports for future resource planning purposes (e.g. add/remove servers).
 
 ## Architecture Diagram & Design
-![Architecture Diagram] (./assets/Architechture.jpg)
+![Architecture Diagram](./assets/Architechture.jpg)
 
 ### Linux_sql project structure and Design
 1. Scripts
