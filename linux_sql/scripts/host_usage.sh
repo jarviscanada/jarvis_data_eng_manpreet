@@ -7,6 +7,12 @@ db_name=$3
 psql_user=$4    
 psql_password=$5
 
+if [[ $# -lt 1 || $# -gt 5 ]]; then
+	echo "Invalid number of arguments
+	For ex: ./host_usage.sh <host> <port> <database_name> <username> <password>"
+	exit 1
+fi
+
 #save hostid variable
 host_name=$(hostname -f)
 #save memory_free to a variable

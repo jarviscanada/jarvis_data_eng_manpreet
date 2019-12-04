@@ -39,10 +39,7 @@ case "$mode" in
         	#run psql
         	sudo docker run --name jrvs-psql -e POSTGRES_PASSWORD=$PGPASSWORD -v pgdata:/var/lib/postgresql/data -p 5432:5432 -d postgres
 		fi
-        fi
-
-	#check running status
-	sudo docker ps	
+        fi	
     ;;
   stop)
 	#Get docker container id from container name
