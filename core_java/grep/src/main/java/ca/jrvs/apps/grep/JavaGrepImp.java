@@ -1,7 +1,9 @@
 package ca.jrvs.apps.grep;
 
 import java.io.*;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,17 +77,30 @@ public class JavaGrepImp implements JavaGrep{
             throw new IllegalArgumentException(String.format("%s is not a directory", rootDir));
         }
 
-        //get all files recursively
-        try {
-            List<File>  resultList = Files.walk(Paths.get(rootDir))
-                    .filter(Files::isRegularFile)
-                    .map(path -> path.toFile())
-                    .collect(Collectors.toList());
-            return resultList;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        List<File> fileList = new ArrayList<>();
+        File rootdir = new File(rootDir);
+
+        //Get the name of directories contained in the dir
+        if (rootdir.isDirectory()) {
+            File[] files = rootdir.listFiles();
+
+
+        if (files != null) {
+             for (File file : files) {
+
+                 //check if file, then add to list
+                  if (file.isFile()) {
+                      fileList.add(file);
+                  } else if (file.isDirectory()) {
+
+                      //add files into list from sub-dir recursively
+                      fileList.addAll(listFiles(file.getAbsolutePath()));
+                  }
+             }
+          }
+      }
+        return fileList;
+
     }
 
     //Read a file and return all the lines
@@ -154,7 +169,7 @@ public class JavaGrepImp implements JavaGrep{
             throw new IllegalArgumentException(String.format("%s is not a file", file.getPath()));
         }
 
-        FileWriter writer = new FileWriter(outFile);
+        BufferedWriter  writer = new BufferedWriter(new FileWriter(file));
         for(String str: lines) {
             writer.write(str + System.lineSeparator());
         }
