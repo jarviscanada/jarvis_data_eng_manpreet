@@ -7,7 +7,8 @@ The project utilizes the Java I/O classes, lambda and stream APIs.
 ## Usage
 In order to run the application, there are three arguments that needs to be specified:
 
-```.*regexPatternSample.* /home/dev/ /tmp/grep.out
+```
+.*regexPatternSample.* /home/dev/ /tmp/grep.out
 ```
 
 Here, we specified our regex pattern as `.*regexPattern*$` that will start to search from `/home/dev/` and recussively search through all the directories and subdirectories. Lastly, the lines that matches the regex pattern will be stored in location `/tmp/grep.out`.  
