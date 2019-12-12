@@ -31,8 +31,8 @@ public class JavaGrepImp implements JavaGrep{
 
         try {
             javaGrepImp.process();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException("failed to write to output file", ex);
         }
 
     }
@@ -40,14 +40,14 @@ public class JavaGrepImp implements JavaGrep{
     @Override
     public void process() throws IOException {
 
-        List<File> files = this.listFiles(rootPath);
+        List<File> files = listFiles(rootPath);
         List<String> matchedLines =  new ArrayList<>();;
 
         for(File file : files){
-            List<String> lines = this.readLines(file);
+            List<String> lines = readLines(file);
             boolean matchFound = false;
             for(String line: lines){
-                matchFound = this.containsPattern(line);
+                matchFound = containsPattern(line);
 
                 //check if match is found
                 if(matchFound){
@@ -84,21 +84,19 @@ public class JavaGrepImp implements JavaGrep{
         if (rootdir.isDirectory()) {
             File[] files = rootdir.listFiles();
 
+                for (File file : files) {
 
-        if (files != null) {
-             for (File file : files) {
+                    //check if file, then add to list
+                    if (file.isFile()) {
+                        fileList.add(file);
+                    } else if (file.isDirectory()) {
 
-                 //check if file, then add to list
-                  if (file.isFile()) {
-                      fileList.add(file);
-                  } else if (file.isDirectory()) {
+                        //add files into list from sub-dir recursively
+                        fileList.addAll(listFiles(file.getAbsolutePath()));
+                    }
+                }
+            }
 
-                      //add files into list from sub-dir recursively
-                      fileList.addAll(listFiles(file.getAbsolutePath()));
-                  }
-             }
-          }
-      }
         return fileList;
 
     }
@@ -125,27 +123,18 @@ public class JavaGrepImp implements JavaGrep{
             return result;
 
         } catch (IOException e) {
-             e.printStackTrace();
+            throw new RuntimeException("failed to read lines", e);
         }
-        return null;
+
     }
 
     //check if a line contains the regex pattern (passed by user)
     @Override
     public boolean containsPattern(String line)
     {
-        PatternSyntaxException exc = null;
         try {
-            Pattern.compile(regex);
-        } catch (PatternSyntaxException e) {
-            exc = e;
-        }
-
-        //check if regex if valid
-        if (exc != null) {
-            exc.printStackTrace();
-        } else {
-            Matcher matcher = Pattern.compile(regex).matcher(line);
+             Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(line);
 
             while (matcher.find()) {
                 if(matcher.group()!=null)
@@ -153,6 +142,8 @@ public class JavaGrepImp implements JavaGrep{
                     return true;
                 }
             }
+        } catch (PatternSyntaxException e) {
+            throw new RuntimeException("failed to compile regex pattern", e);
         }
         return false;
     }

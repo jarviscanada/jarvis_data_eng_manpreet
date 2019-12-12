@@ -28,7 +28,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
         try {
             javaGrepImp.process();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            throw new RuntimeException("failed to write to output file", ex);
         }
 
     }
@@ -51,9 +51,8 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
                     .collect(Collectors.toList());
             return resultList;
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to list files",e);
         }
-        return null;
     }
 
     //Read a file and return all the lines
@@ -71,9 +70,8 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
             List<String> lines = Files.lines(Paths.get(filePath)).collect(Collectors.toList());
             return lines;
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to read lines",e);
         }
-        return null;
     }
 
 }
