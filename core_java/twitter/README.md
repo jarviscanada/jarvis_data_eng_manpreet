@@ -1,21 +1,21 @@
 ## Introduction 
 
-This Java application is a twitter based application that can post, show and delete the twitter using REST APIs unlike traditional usage through mobile or web application. I learned how to use a Java library to process JSON documents, deeper knowledge of DTOs, DAO design pattern and maven project structure dependencies. This project is based on MVC architecture (Model, view and Controller).
+This Java application is a twitter based application that can post, show and delete the tweet using REST APIs unlike traditional usage through mobile or web application. I learned how to use a Java library to process JSON documents, deeper knowledge of DTOs, DAO design pattern and maven project structure dependencies. This project is based on MVC architecture (Model, view and Controller).
 
 While implementing Twitter CLI, I also implemented basic spring framework.
 ## Design
 
 ![Twitter UML](./assets/twitter.png)
 
-1) TwitterHttpHelper : HttpHelper builds connection between Twitter API and Java application. It executes HTTP with given URI and authorizes the HTTP request using Twitter Secret. 
+1) TwitterHttpHelper : HttpHelper builds connection between Twitter API and Java application. It executes HTTP with given URI and authorizes the HTTP request. 
 2) TwitterDAO : TwitterDAO is used to construct  URIs from the tweet object and invokes Twitter HTTP Helper. It implements three methods create, findById and deleteById
 3) TwitterService : TwitterService is used to handle the business logic of the application, it validates the text length, tweet coordinate and ID format, then return Twitter Object.
 4) TwitterController : TwitterController validates the user input from CLI and invokes the methods implemented TwitterService method. It validate user input and then successively parse argument.
 5) TwitterCLIApp : TwitterCLIApp is used to take inputs from the command line and invoke methods imlpemented in TwitterController.
 
 ## Quick Start
-  #### Packaging App- Maven
-  * First set up the environment variables for OAuth and package the project through Maven. T
+
+  * First set up the environment variables for OAuth and package the project through Maven. 
   * To build the project, run `maven package` in command line window inside the twitter directory that will download all the dependencies from `pom.xml`.
   * Lastly, to run the app, `java -jar target/java_apps-1.0-SNAPSHOT.jar post|show|delete [option(s)]` in the command window as shown below.
  
