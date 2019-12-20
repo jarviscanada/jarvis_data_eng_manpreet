@@ -1,7 +1,6 @@
 package ca.jrvs.apps.twitter.controller;
 
 import ca.jrvs.apps.twitter.Models.Tweet;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
