@@ -2,7 +2,14 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
   http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion/>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.3.RELEASE</version>
+    <relativePath/>
+  </parent>
 
   <groupId>ca.jrvs.apps.twitter</groupId>
   <artifactId>twitter</artifactId>
@@ -42,7 +49,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       <scope>test</scope>
     </dependency>
 
-
     <!--spring-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -81,7 +87,15 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       <artifactId>gson</artifactId>
       <version>2.8.6</version>
     </dependency>
-
-
   </dependencies>
+
+   <build>
+     <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+     </plugins>
+   </build>
+
 </project>
