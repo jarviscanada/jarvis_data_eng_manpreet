@@ -10,10 +10,13 @@ import ca.jrvs.apps.twitter.service.TwitterService;
 import ca.jrvs.apps.twitter.Models.Tweet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+@Component
 public class TwitterCLIApp {
 
     private static final String USAGE= "USAGE: TwitterCLIApp post|show|delete [options]";

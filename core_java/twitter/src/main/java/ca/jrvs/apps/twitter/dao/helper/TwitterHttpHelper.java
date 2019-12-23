@@ -22,6 +22,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.print.attribute.standard.PresentationDirection;
@@ -34,6 +36,17 @@ import java.net.URISyntaxException;
 public class TwitterHttpHelper implements HttpHelper {
 
     private OAuthConsumer oAuthConsumer;
+
+    public TwitterHttpHelper() {
+    }
+
+    @Autowired
+    public TwitterHttpHelper(@Value("${consumerKey}") String consumerKey,
+                             @Value("${consumerSecret}") String consumerSecret,
+                             @Value("${accessToken}") String accessToken,
+                             @Value("${accessTokenSecret}") String accessTokenSecret) {
+        setupContext(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+    }
 
     public void setupContext(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
         oAuthConsumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
