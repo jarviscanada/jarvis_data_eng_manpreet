@@ -1,4 +1,4 @@
-##Introduction 
+## Introduction 
 
 This application aims to enlighten JDBC which is one of the most fundamental and frequent used Java libraries. JDBC allows a connection between a Java application and an RDBMS.User can connect with PostgresSQL and make amendments in the tables using CRUD operations (create, read, update, delete). This project also gives the idea Data Access Object, Data Transfer Object as an interface, and Database Transaction by using JDBC. 
 
