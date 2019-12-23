@@ -7,8 +7,8 @@ This application aims to enlighten JDBC which is one of the most fundamental and
 
 ##  Design Patterns
 This section discusses the two famous design patterns that are as follows:
-##### DAO (Data Access Object)
+#### DAO (Data Access Object)
 DAO provides abstraction on database/data files or any other persistence mechanism so that, persistence layer could be manipulated without knowing its implementation details. DAO involves more complex queries since there is involvement is multiple tables. We can say, DAO is an abstraction of data persistence.
 
-##### Repository Pattern
+#### Repository Pattern
 This pattern does't involve complex quesries, rather it foccus to use simple ones.  Here, unloke DAO, repository pattern works typically on single table or DTO by acting as an abstraction betweeen various colletion of objects.
