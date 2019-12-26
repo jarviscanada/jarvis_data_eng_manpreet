@@ -3,6 +3,7 @@ package ca.jrvs.apps.twitter.service;
 import ca.jrvs.apps.twitter.Models.Coordinates;
 import ca.jrvs.apps.twitter.Models.Tweet;
 import ca.jrvs.apps.twitter.dao.CrdDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+@org.springframework.stereotype.Service
 @Component
 public class TwitterService implements Service {
 
@@ -17,6 +19,8 @@ public class TwitterService implements Service {
 
     public TwitterService() {
     }
+
+    @Autowired
 
     public TwitterService(CrdDao<Tweet, String> dao) {
         this.dao = dao;

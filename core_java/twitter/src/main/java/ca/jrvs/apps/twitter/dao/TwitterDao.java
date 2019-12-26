@@ -9,7 +9,9 @@ import com.google.gson.GsonBuilder;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +22,7 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 
-@Component
+@Repository
 public class TwitterDao implements CrdDao<Tweet, String> {
 
     // URI constants
@@ -40,6 +42,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
     private HttpHelper httpHelper;
 
+    @Autowired
     public TwitterDao(HttpHelper httpHelper) {
         this.httpHelper = httpHelper;
     }
