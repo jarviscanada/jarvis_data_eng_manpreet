@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
+@Component
 public class TwitterController implements Controller {
 
     private static final String COORD_SEP = ":" ;
@@ -25,6 +26,7 @@ public class TwitterController implements Controller {
     }
 
     @Autowired
+
     public TwitterController(Service service) {
         this.service = service;
     }

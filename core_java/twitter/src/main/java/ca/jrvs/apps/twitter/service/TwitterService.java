@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
+@Component
 public class TwitterService implements Service {
 
     private CrdDao<Tweet, String> dao;
@@ -20,6 +21,7 @@ public class TwitterService implements Service {
     }
 
     @Autowired
+
     public TwitterService(CrdDao<Tweet, String> dao) {
         this.dao = dao;
 
