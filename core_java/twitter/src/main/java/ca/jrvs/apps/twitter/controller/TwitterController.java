@@ -20,7 +20,7 @@ public class TwitterController implements Controller {
     private static final String COORD_SEP = ":" ;
     private static final String COMMA = ",";
 
-    Service service = new TwitterService();
+    Service service;
 
     public TwitterController() {
     }
