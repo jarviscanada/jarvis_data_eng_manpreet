@@ -35,9 +35,7 @@ public class TwitterCLIApp {
     String accessToken = System.getenv("accessToken");
     String accessTokenSecret = System.getenv("accessTokenSecret");
 
-    {
-        helper.setupContext(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-    }
+    helper.setupContext(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
     CrdDao twitterDao = new TwitterDao(helper);
     Service twitterService = new TwitterService(twitterDao);
