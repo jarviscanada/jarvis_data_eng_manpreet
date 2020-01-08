@@ -7,8 +7,8 @@ package ca.jrvs.practice.codingChallenge;
 public class Fibonacci {
 
     /**
-     * Big-O:
-     * Justification:
+     * Big-O: O(2^n)
+     * Justification: in this recursive operation, operations are traversed as a tree.
      */
     public int recursiveFibonacci(int totalNum){
         int result;
@@ -21,8 +21,8 @@ public class Fibonacci {
     }
 
     /**
-     * Big-O:
-     * Justification:
+     * Big-O: O(n)
+     * Justification: the series is traversed only ones
      */
     public int dynamicFibonacci(int totalNum){
 
