@@ -1,4 +1,4 @@
-REATE DATABASE jrvstrading;
+CREATE DATABASE jrvstrading;
 GRANT ALL PRIVILEGES ON DATABASE jrvstrading TO postgres;
 
 --db for test case
