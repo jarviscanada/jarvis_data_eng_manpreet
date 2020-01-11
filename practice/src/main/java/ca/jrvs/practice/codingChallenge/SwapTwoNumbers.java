@@ -6,10 +6,9 @@ package ca.jrvs.practice.codingChallenge;
 public class SwapTwoNumbers {
 
     /**
-     * Big-O: Time complexity : O()
-     * Justification:
-     *
-     **/
+     * Big-O: O(1)
+     * Justification: it's a bitwise operation
+     */
     public int[] swapNmbersBitManipulation(int[] num){
         if(num.length>2){
             throw new IllegalArgumentException("Invalid Input: Numbers more than 2");
@@ -21,10 +20,9 @@ public class SwapTwoNumbers {
     }
 
     /**
-     * Big-O: Time complexity : O()
-     * Justification:
-     *
-     **/
+     * Big-O: O(1)
+     * Justification: it's an arithmetic operation
+     */
     public int[] swapNmbersArithemeticOperation(int[] num){
         if(num.length>2){
             throw new IllegalArgumentException("Invalid Input: Numbers more than 2");
