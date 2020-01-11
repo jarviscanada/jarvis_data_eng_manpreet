@@ -8,8 +8,8 @@ package ca.jrvs.practice.codingChallenge;
 public class StringContainsDigits {
 
     /**
-     * Big-O: Time complexity : O()
-     * Justification:
+     * Big-O: Time complexity : O(n)
+     * Justification: the whole string is travered with length n
      *
      **/
     public boolean checkDigitsUsingAscii(String str){
@@ -21,8 +21,8 @@ public class StringContainsDigits {
     }
 
     /**
-     * Big-O: Time complexity : O()
-     * Justification:
+     * Big-O: Time complexity : O(n)
+     * Justification: In the implementation of vaueOf, the whole string is traversed.
      *
      **/
     public boolean checkDigitsUsingApi(String str){
@@ -35,8 +35,9 @@ public class StringContainsDigits {
     }
 
     /**
-     * Big-O: Time complexity : O()
-     * Justification:
+     * Big-O: Time complexity : O(n)
+     * Justification:Running a DFA-compiled regular expression against a string is indeed O(n),
+     * but can require up to O(2^n) construction time/space (where n = regular expression size).
      *
      **/
     public boolean checkDigitsUsingRegex(String str){
