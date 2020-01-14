@@ -6,11 +6,15 @@ package ca.jrvs.practice.codingChallenge;
 public class RemoveDuplicaties {
 
     /**
-     * Big-O: O()
-     * Justification:
+     * Time Complexity: O(n)
+     * Justification: Each of I and j loop are traversed one time.
+     *
+     * Space Complexity: O(1)
      */
     public int removeUsingTwoPointer(int[] nums){
-        if (nums.length == 0) return 0;
+        if (nums.length == 0)
+            return 0;
+
         int i = 0;
         for (int j = 1; j < nums.length; j++) {
             if (nums[j] != nums[i]) {
