@@ -7,7 +7,7 @@ public class RemoveDuplicaties {
 
     /**
      * Time Complexity: O(n)
-     * Justification: Each of I and j loop are traversed one time.
+     * Justification: Each of i and j loop are traversed atmost one time.
      *
      * Space Complexity: O(1)
      */
