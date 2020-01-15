@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,8 +68,12 @@ public class QuoteDao implements CrudRepository<Quote, String> {
                             quote.getAskSize(),quote.getTicker()};
     }
     @Override
-    public <S extends Quote> Iterable<S> saveAll(Iterable<S> iterable) {
-        return null;
+    public <S extends Quote> Iterable<S> saveAll(Iterable<S> quotes) {
+        List<S> quotesOut = new ArrayList<>();
+        for (Quote q : quotes) {
+            quotesOut.add((S) save(q));
+        }
+        return quotesOut;
     }
 
     @Override

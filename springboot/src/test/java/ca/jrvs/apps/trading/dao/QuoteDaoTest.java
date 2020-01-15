@@ -2,6 +2,8 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Quote;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,18 @@ public class QuoteDaoTest {
     private QuoteDao quoteDao;
 
     private Quote savedQuote;
+
+    @Before
     public void insertOne(){
-        savedQuote.setAskPrice(10d);
-        savedQuote.setAskSize(10);
-        savedQuote.setBidPrice(10.2d);
-        savedQuote.setBidSize(10);
-        savedQuote.setId("SDG");
-        savedQuote.setLastPrice(10.1d);
+        savedQuote.setAskPrice(5d);
+        savedQuote.setAskSize(5);
+        savedQuote.setBidPrice(5.9d);
+        savedQuote.setBidSize(5);
+        savedQuote.setTicker("SDG");
+        savedQuote.setLastPrice(5.2d);
         quoteDao.save(savedQuote);
     }
+
     @Test
     public void save() {
     }
@@ -59,5 +64,10 @@ public class QuoteDaoTest {
 
     @Test
     public void deleteAll() {
+    }
+
+    @After
+    public void deleteOne(){
+        quoteDao.deleteById(savedQuote.getTicker());
     }
 }
