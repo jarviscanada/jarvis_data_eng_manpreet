@@ -33,17 +33,21 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
 
     }
 
-    //Read a file and return all the lines
+ 
+    /**
+   * Reads files.
+   * @param rootDir Path of the Directory to read.
+   * @return List of files.
+   */
     @Override
     public List<File> listFiles(String rootDir) {
         File directory = new File(rootDir);
 
-        // Check if rootDir is Directory
         if(!directory.exists() || !directory.isDirectory()){
             throw new IllegalArgumentException(String.format("%s is not a directory", rootDir));
         }
 
-        //get all files recursively
+        // Get all files recursively
         try {
             List<File>  resultList = Files.walk(Paths.get(rootDir))
                     .filter(Files::isRegularFile)
@@ -54,8 +58,12 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
             throw new RuntimeException("Failed to list files",e);
         }
     }
-
-    //Read a file and return all the lines
+    
+    /**
+   * Read a file.
+   * @param inputFile File to read.
+   * @return List of lines.
+   */
     @Override
     public List<String> readLines(File inputFile) {
 
