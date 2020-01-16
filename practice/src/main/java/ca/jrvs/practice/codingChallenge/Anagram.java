@@ -7,7 +7,7 @@ import java.util.Arrays;
  * ticket: https://www.notion.so/Valid-Anagram-8502c12d4d114e5d96136ec265899d79
  */
 
-public class Solution {
+public class Anagram {
 
     /**
      * Time Complexity: O(nlogn)
