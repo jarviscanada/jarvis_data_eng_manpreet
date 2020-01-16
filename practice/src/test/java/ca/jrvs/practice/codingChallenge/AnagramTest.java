@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SolutionTest {
+public class AnagramTest {
 
     @Test
     public void checkAnagramUsingSort() {
-        Solution obj = new Solution();
+        Anagram obj = new Anagram();
         String str1 = "anagram";
         String str2 = "nagaram";
         boolean actual = obj.checkAnagramUsingSort(str1,str2);
@@ -18,7 +18,7 @@ public class SolutionTest {
 
     @Test
     public void checkAnagramUsingHashtable() {
-        Solution obj = new Solution();
+        Anagram obj = new Anagram();
         String str1 = "anagram";
         String str2 = "nagaram";
         boolean actual = obj.checkAnagramUsingHashtable(str1,str2);
