@@ -63,14 +63,17 @@ public class JavaGrepImp implements JavaGrep{
         }
 
     }
-
-    //traverse a directory and return all the files
+    
+   /**
+   * Traverses the directory and gets all the files
+   * @param rootDir Path of Directory to be traversed.
+   * @return List of files.
+   */
     @Override
     public List<File> listFiles(String rootDir)
     {
         File directory = new File(rootDir);
 
-        // Check if rootDir is Directory
         if(!directory.exists() || !directory.isDirectory()){
             throw new IllegalArgumentException(String.format("%s is not a directory", rootDir));
         }
@@ -99,7 +102,11 @@ public class JavaGrepImp implements JavaGrep{
 
     }
 
-    //Read a file and return all the lines
+   /**
+   * Read a file and return all the lines
+   * @param inputFile File to be read.
+   * @return List of lines.
+   */
     @Override
     public List<String> readLines(File inputFile)
     {
@@ -126,7 +133,11 @@ public class JavaGrepImp implements JavaGrep{
 
     }
 
-    //check if a line contains the regex pattern (passed by user)
+   /**
+   * Checks if a line contains the regex pattern.
+   * @param line Lookup String for pattern.
+   * @return true if line contains pattern else false.
+   */
     @Override
     public boolean containsPattern(String line)
     {
@@ -145,8 +156,12 @@ public class JavaGrepImp implements JavaGrep{
         }
         return false;
     }
-
-    //Write lines to a file
+   
+    /**
+   * Write lines to a file.
+   * @param lines List of lines to write.
+   * @return Nothing.
+   */
     @Override
     public void writeToFile(List<String> lines) throws IOException {
 
