@@ -11,7 +11,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-@org.springframework.stereotype.Service
 @Component
 public class TwitterService implements Service {
 
