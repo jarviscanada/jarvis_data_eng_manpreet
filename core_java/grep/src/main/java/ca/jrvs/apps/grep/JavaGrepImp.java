@@ -49,14 +49,12 @@ public class JavaGrepImp implements JavaGrep{
             for(String line: lines){
                 matchFound = containsPattern(line);
 
-                //check if match is found
                 if(matchFound){
                     matchedLines.add(line);
                 }
             }
         }
-
-        //check if matched Lines found and write to file
+        
         if(matchedLines!=null){
             this.writeToFile(matchedLines);
             System.out.println("Patterns has been written to File");
