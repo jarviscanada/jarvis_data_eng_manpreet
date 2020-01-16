@@ -1,14 +1,13 @@
 package ca.jrvs.practice.codingChallenge;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
-public class SolutionTest {
+public class MergeArraySolutionTest {
 
     @Test
     public void mergeSortedArray() {
-        Solution obj = new Solution();
+        MergeArraySolution obj = new MergeArraySolution();
         int[] nums1 = {1,2,3,0,0,0};
         int m = 3;
         int[] nums2 = {2,5,6};
