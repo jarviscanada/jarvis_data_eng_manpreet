@@ -5,11 +5,7 @@ import ca.jrvs.apps.trading.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/quote")
@@ -29,6 +25,16 @@ public class QuoteController {
         try {
             return quoteService.findIexQuoteByTicker(ticker);
         }catch (Exception e){
+            throw ResponseExceptionUtil.getResponseStatusException(e);
+        }
+    }
+
+    @PutMapping(path = "/iexMarketData")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateMarketData(){
+        try{
+            quoteService.updateMarketData();
+        } catch (Exception e){
             throw ResponseExceptionUtil.getResponseStatusException(e);
         }
     }
