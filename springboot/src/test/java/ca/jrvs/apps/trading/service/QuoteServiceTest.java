@@ -47,28 +47,11 @@ public class QuoteServiceTest {
 
     @Test
     public void saveQuotes() {
-        Quote quote1 = new Quote();
-        quote1.setAskPrice(5d);
-        quote1.setAskSize(5);
-        quote1.setBidPrice(5.9d);
-        quote1.setBidSize(5);
-        quote1.setTicker("SDG");
-        quote1.setLastPrice(5.2d);
-
-        Quote quote2 = new Quote();
-        quote2.setAskPrice(4d);
-        quote2.setAskSize(4);
-        quote2.setBidPrice(1.9d);
-        quote2.setBidSize(7);
-        quote2.setTicker("AAPL");
-        quote2.setLastPrice(15.2d);
-        List<Quote> quotes = new ArrayList<Quote>() {
-            {
-                add(quote1);
-                add(quote2);
-            }
-        };
-        List<Quote> savedQuotes = quoteService.saveQuotes(quotes);
+        List<String> tickers =  new ArrayList(){{
+            add("AAPL");
+            add("SDG");
+        }};
+        List<Quote> savedQuotes = quoteService.saveQuotes(tickers);
         assertNotNull(savedQuotes);
         assertEquals(2, savedQuotes.size());
     }

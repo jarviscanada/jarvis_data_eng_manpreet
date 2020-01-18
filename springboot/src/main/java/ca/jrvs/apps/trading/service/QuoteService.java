@@ -61,6 +61,12 @@ public class QuoteService {
         }
     }
 
+    /**
+     * Helper method: Map a IexQuote to a Quote entity
+     *
+     * -Note: `iexQuote.getLastestPrice() == null` if the stock market is closed.
+     * -Make sure set a default value for number field(s).
+     */
     protected static Quote buildQuoteFromIexQuote(IexQuote iexQuote){
         Quote quote = new Quote();
         quote.setTicker(iexQuote.getSymbol());
@@ -72,14 +78,30 @@ public class QuoteService {
         return quote;
     }
 
-
+    /**
+     * find all quotes from the quote table
+     * @return list of quotes
+     */
     public List<Quote> findAllQuotes(){
         return quoteDao.findAll();
     }
 
-    public List<Quote> saveQuotes(List<Quote> quotes){
+    /**
+     * Validate (aganist IEX) and save given tickers to quote table
+     *
+     * - Get iexQuotes
+     * - convert each iexQuote to Quote entity
+     * - persist the quote to db
+     *
+     * @param tickers
+     * @throws IllegalArgumentException if ticker is not found
+     */
+    public List<Quote> saveQuotes(List<String> tickers){
+        Quote quote;
         List<Quote> savedQuote = new ArrayList<>();
-        for(Quote quote: quotes){
+        List<IexQuote> iexQuotes= marketDataDao.findAllById(tickers);
+        for(IexQuote iexQuote: iexQuotes){
+            quote = buildQuoteFromIexQuote(iexQuote);
             savedQuote.add(saveQuote(quote));
         }
         return savedQuote;
@@ -87,6 +109,13 @@ public class QuoteService {
 
     public Quote saveQuote(Quote quote){
         return quoteDao.save(quote);
+    }
+
+    public Quote saveQuote(String ticker){
+        IexQuote iexQuote = new IexQuote();
+        iexQuote = marketDataDao.findById(ticker).get();
+        Quote quote = buildQuoteFromIexQuote(iexQuote);
+        return saveQuote(quote);
     }
 
 
