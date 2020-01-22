@@ -12,6 +12,9 @@ public class CompareMap {
      * Time Complexity: O(n)
      * Justification: Implementation of equals have O(n) as iterator iterates through the map atmost once.
      *
+     * Space Complexity: O(1)
+     * Justification: No extra space is required
+     *
      */
     public <K,V> boolean compareMapUsingAPI(Map<K,V> map1, Map<K,V> map2){
         return map1.equals(map2);
@@ -20,6 +23,9 @@ public class CompareMap {
     /**
      * Time Complexity: O(n)
      * Justification: Iterator iterates through the map atmost once.
+     *
+     * Space Complexity: O(1)
+     * Justification: No extra space is required
      *
      */
     public <K,V> boolean compareMap(Map<K,V> map1, Map<K,V> map2){
