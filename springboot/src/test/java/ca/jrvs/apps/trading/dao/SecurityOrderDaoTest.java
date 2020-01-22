@@ -2,6 +2,7 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Account;
+import ca.jrvs.apps.trading.model.domain.Quote;
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
 import ca.jrvs.apps.trading.model.domain.Trader;
 import org.assertj.core.util.Lists;
@@ -36,14 +37,28 @@ public class SecurityOrderDaoTest {
     @Autowired
     private SecurityOrderDao securityOrderDao;
 
+    @Autowired
+    private QuoteDao quoteDao;
+
     private SecurityOrder securityOrder;
 
     private Account account;
 
     private Trader trader;
 
+    private Quote quote;
+
     @Before
     public void insertOne() {
+        quote = new Quote();
+        quote.setTicker("AAPL");
+        quote.setAskPrice(26.3);
+        quote.setAskSize(52);
+        quote.setBidPrice(55.6);
+        quote.setBidSize(12);
+        quote.setLastPrice(26.6);
+        quoteDao.save(quote);
+
         traderDao.deleteAll();
         trader = new Trader();
         trader.setFirst_name("John");
@@ -67,7 +82,7 @@ public class SecurityOrderDaoTest {
         securityOrder.setSize(2);
         securityOrder.setPrice(33.22);
         securityOrder.setStatus("accepted");
-        securityOrder.setTicker("AAPL");
+        securityOrder.setTicker(quote.getTicker());
         securityOrderDao.save(securityOrder);
     }
 
@@ -96,37 +111,44 @@ public class SecurityOrderDaoTest {
 
     @Test
     public void saveAll() {
-//        List<SecurityOrder> orders = new ArrayList<SecurityOrder>();
-//        SecurityOrder securityOrder1 = new SecurityOrder();
-//        securityOrder1.setAmount(400.88);
-//        securityOrder1.setTrader_id(trader.getID());
-//
-//        Account account2 = new Account();
-//        account2.setAmount(330.88);
-//        account2.setTrader_id(trader.getID());
-//
-//        accounts.add(account1);
-//        accounts.add(account2);
-//        Iterable<Account> savedAccounts = accountDao.saveAll(accounts);
-//
-//        assertNotNull(savedAccounts);
-//        assertEquals(3, accountDao.count());
-//
-//        accountDao.deleteById(account1.getID());
-//        accountDao.deleteById(account2.getID());
+        List<SecurityOrder> orders = new ArrayList<SecurityOrder>();
+        SecurityOrder securityOrder1 = new SecurityOrder();
+        securityOrder1.setSize(23);
+        securityOrder1.setPrice(26.3);
+        securityOrder1.setTicker(quote.getTicker());
+        securityOrder1.setNotes("This is my note");
+        securityOrder1.setAccountId(account.getID());
+        securityOrder1.setStatus("Pending");
+
+        SecurityOrder securityOrder2 = new SecurityOrder();
+        securityOrder2.setSize(12);
+        securityOrder2.setPrice(28.4);
+        securityOrder2.setTicker(quote.getTicker());
+        securityOrder2.setNotes("This is my note");
+        securityOrder2.setAccountId(account.getID());
+        securityOrder2.setStatus("Completed");
+
+        orders.add(securityOrder1);
+        orders.add(securityOrder2);
+        Iterable<SecurityOrder> savedOrders = securityOrderDao.saveAll(orders);
+
+        assertNotNull(savedOrders);
+        assertEquals(3, securityOrderDao.count());
+
+        securityOrderDao.deleteById(securityOrder1.getID());
+        securityOrderDao.deleteById(securityOrder2.getID());
     }
 
     @Test
     public void findById() {
         SecurityOrder savedSecurityOrder = securityOrderDao.findById(securityOrder.getID()).get();
         assertEquals(securityOrder.getPrice(), savedSecurityOrder.getPrice());
-        assertEquals(securityOrder.getNotes(), securityOrder.getNotes());
-
+        assertEquals(securityOrder.getSize(), savedSecurityOrder.getSize());
+        assertEquals(securityOrder.getNotes(), savedSecurityOrder.getNotes());
     }
 
     @Test
     public void existsById() {
-        List<SecurityOrder> orders = Lists.newArrayList(securityOrderDao.findAll());
         assertTrue(securityOrderDao.existsById(securityOrder.getID()));
     }
 
@@ -156,6 +178,8 @@ public class SecurityOrderDaoTest {
     public void deleteOne() {
         securityOrderDao.deleteById(securityOrder.getID());
         accountDao.deleteById(account.getID());
+        traderDao.deleteById(trader.getID());
+        quoteDao.deleteById(quote.getTicker());
     }
 
 }

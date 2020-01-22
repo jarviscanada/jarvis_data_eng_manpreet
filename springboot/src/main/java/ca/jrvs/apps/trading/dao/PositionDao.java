@@ -49,10 +49,10 @@ public class PositionDao extends JdbcCrudDao<Position>{
        throw new UnsupportedOperationException("Update not supported");
     }
 
-    private Object[] makeUpdateValues(Position position){
-        return new Object[]{position.getID(),position.getPosition(),position.getTicker()};
-
-    }
+//    private Object[] makeUpdateValues(Position position){
+//        return new Object[]{position.getID(),position.getPosition(),position.getTicker()};
+//
+//    }
     public static Logger getLogger() {
         return logger;
     }
