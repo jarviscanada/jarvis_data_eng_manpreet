@@ -37,7 +37,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
         if (existsById(entity.getID())){
             int updateRowNum = updateOne(entity);
             if (updateRowNum != 1){
-                throw new DataRetrievalFailureException("Unable to update quote.");
+                throw new DataRetrievalFailureException("Unable to update entity.");
             }
         } else {
             addOne(entity);
@@ -73,6 +73,17 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
             logger.debug("Can't find trader id: " + id, e);
         }
         return entity;
+    }
+
+    public List<T> findByColumn(String column, Object val) {
+        List<T> entities = null;
+        String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + column + "=?";
+        try {
+            entities = getJdbcTemplate().query(selectSql, BeanPropertyRowMapper.newInstance(getEntityClass()), val);
+        } catch (IncorrectResultSizeDataAccessException e ){
+            logger.debug("Can't find trader id: " + val, e);
+        }
+        return entities;
     }
 
     @Override
@@ -120,6 +131,14 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
         }
         String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
         getJdbcTemplate().update(deleteSql, id);
+    }
+
+    public void deleteByColumn(String column, Object val) {
+        if (column.isEmpty() || val == null) {
+            throw new IllegalArgumentException("Column and Value can't be null");
+        }
+        String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + column + "=?";
+        getJdbcTemplate().update(deleteSql, val);
     }
 
     @Override

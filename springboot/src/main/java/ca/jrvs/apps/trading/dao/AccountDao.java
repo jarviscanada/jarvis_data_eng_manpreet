@@ -48,8 +48,12 @@ public class AccountDao extends JdbcCrudDao<Account>{
 
     @Override
     public int updateOne(Account entity) {
-        String updateSQL = "UPDATE " + getTABLE_NAME() + " SET amount=?";
-        return getJdbcTemplate().update(updateSQL, entity.getAmount());
+        String updateSQL = "UPDATE " + getTABLE_NAME() + " SET amount=? WHERE id=?";
+        return getJdbcTemplate().update(updateSQL, makeUpdateValues(entity));
+    }
+
+    private Object[] makeUpdateValues(Account account){
+        return new Object[]{account.getAmount(), account.getID()};
     }
 
     @Override
