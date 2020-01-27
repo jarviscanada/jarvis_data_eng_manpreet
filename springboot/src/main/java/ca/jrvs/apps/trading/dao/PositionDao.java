@@ -5,10 +5,15 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.server.MethodNotAllowedException;
+
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PositionDao extends JdbcCrudDao<Position>{
@@ -17,6 +22,7 @@ public class PositionDao extends JdbcCrudDao<Position>{
 
     private final String TABLE_NAME = "position";
     private final String ID_COLUMN = "account_id";
+    private final String TICKER_COLUMN = "ticker";
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcInsert simpleJdbcInsert;
@@ -43,16 +49,27 @@ public class PositionDao extends JdbcCrudDao<Position>{
         return Position.class;
     }
 
+    public Optional<Position> getByAccountIdAndTicker(Integer accountId, String ticker) {
+        Optional<Position> entity = Optional.empty();
+        String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "= " + accountId +
+                " AND " + TICKER_COLUMN + "='" + ticker + "'";
+        try {
+            entity = Optional.ofNullable((Position) getJdbcTemplate().
+                    queryForObject(selectSql,
+                            BeanPropertyRowMapper.newInstance(getEntityClass())));
+        } catch (IncorrectResultSizeDataAccessException e ){
+            logger.debug("Can't find Position id: " + accountId + ", ticker:" + ticker, e);
+        }
+        return entity;
+    }
+
+
 
     @Override
     public int updateOne(Position position) {
        throw new UnsupportedOperationException("Update not supported");
     }
 
-//    private Object[] makeUpdateValues(Position position){
-//        return new Object[]{position.getID(),position.getPosition(),position.getTicker()};
-//
-//    }
     public static Logger getLogger() {
         return logger;
     }
