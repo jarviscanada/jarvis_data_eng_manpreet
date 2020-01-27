@@ -2,6 +2,8 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Position;
 import javax.sql.DataSource;
+
+import io.swagger.models.auth.In;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +65,19 @@ public class PositionDao extends JdbcCrudDao<Position>{
         return entity;
     }
 
+    public List<Position> findPositionByAccountID(Integer accountID){
+        List<Position> entities = null;
+        String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "= " + accountID ;
 
+        try {
+            entities = getJdbcTemplate().
+                    query(selectSql,
+                            BeanPropertyRowMapper.newInstance(getEntityClass()));
+        } catch (IncorrectResultSizeDataAccessException e ){
+            logger.debug("Can't find Position by account ID", e);
+        }
+        return entities;
+    }
 
     @Override
     public int updateOne(Position position) {
