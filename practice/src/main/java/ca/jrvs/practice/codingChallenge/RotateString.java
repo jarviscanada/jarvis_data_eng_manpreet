@@ -7,9 +7,11 @@ package ca.jrvs.practice.codingChallenge;
 public class RotateString {
 
     /**
-     * Big-O: Time complexity : O(n^2)
-     * Justification:
+     * Time complexity : O(n^2)
+     * Justification: n is the length of str1
      *
+     * Space Complexity: O(n)
+     * Justification: the space used building str1+str1
      **/
     public boolean rotateStringSimpleCheck(String str1, String str2){
         return str1.length() == str2.length() && (str1 + str1).contains(str2);
