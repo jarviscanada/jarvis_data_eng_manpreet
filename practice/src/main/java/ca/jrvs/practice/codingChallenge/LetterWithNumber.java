@@ -6,9 +6,11 @@ package ca.jrvs.practice.codingChallenge;
 public class LetterWithNumber {
 
     /**
-     * Big-O: Time complexity : O(n)
-     * Justification: The whole string is traversed.
+     * Time complexity : O(n)
+     * Justification: The whole string of size n is traversed atmost ones.
      *
+     * Space Complexity: O(n)
+     * Justification: It takes an extra space of length n to store the output.
      **/
     public String printLetterWithNumber(String input) {
         StringBuilder newStr = new StringBuilder();
