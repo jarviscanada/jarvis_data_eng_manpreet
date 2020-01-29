@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 /**
  * ticket: https://www.notion.so/Find-Largest-Smallest-d9c2bfdf936b4d718046bb212600b8b0
  */
-public class Solution {
+public class MinMaxSolution {
 
     /**
      * Time Complexity:O(n)

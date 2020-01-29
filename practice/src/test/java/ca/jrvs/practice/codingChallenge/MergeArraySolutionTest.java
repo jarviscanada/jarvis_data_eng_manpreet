@@ -16,4 +16,14 @@ public class MergeArraySolutionTest {
         int[] expected = {1,2,2,3,5,6};
         assertArrayEquals(expected,actual);
     }
+
+    @Test
+    public void mergeSortedArrayApproach2() {
+        MergeArraySolution obj = new MergeArraySolution();
+        int[] nums1 = {1,2,3};
+        int[] nums2 = {2,5,6};
+        int[] actual = obj.mergeSortedArrayApproach2(nums1,nums2);
+        int[] expected = {1,2,2,3,5,6};
+        assertArrayEquals(expected,actual);
+    }
 }
