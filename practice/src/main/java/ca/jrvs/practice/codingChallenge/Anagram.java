@@ -15,8 +15,8 @@ public class Anagram {
      * hence, nlogn
      *
      * Space Complexity: O(1)
-     * Justification: toCharArray() makes a copy of the string so it costs O(n)O(n) extra space,
-     * but we ignore this for complexity analysis because:     *
+     * Justification: toCharArray() makes a copy of the string so it costs O(n) extra space,
+     * but we ignore this for complexity analysis because:     
      * -It is a language dependent detail.
      * -It depends on how the function is designed.
      * For example, the function parameter types can be changed to char[].
@@ -40,7 +40,7 @@ public class Anagram {
      *
      * Space Complexity: O(1)
      * Justification:  Although we do use extra space, the space complexity is O(1)
-     * because the table's size stays constant no matter how large nn is.
+     * because the table's size stays constant no matter how large n is.
      */
     public boolean checkAnagramUsingHashtable(String str1, String str2) {
         if (str1.length() != str2.length()) {
