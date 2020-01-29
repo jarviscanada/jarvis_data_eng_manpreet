@@ -16,10 +16,10 @@ public class LetterWithNumber {
             throw new IllegalArgumentException("Invalid Input: string conains spaces");
         }
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) >= 97 && input.charAt(i) <= 122) {
+            if (input.charAt(i) >= 'a' && input.charAt(i) <= 'z') {
                 newStr.append(input.charAt(i))
                         .append(input.charAt(i) - 96);
-            } else if (input.charAt(i) >= 65 && input.charAt(i) <= 90) {
+            } else if (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z') {
                 newStr.append(input.charAt(i))
                         .append(input.charAt(i) - 64);
             } else{
