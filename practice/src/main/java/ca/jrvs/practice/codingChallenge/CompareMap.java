@@ -10,7 +10,7 @@ public class CompareMap {
 
     /**
      * Time Complexity: O(n)
-     * Justification: Implementation of equals have O(n) as iterator iterates through the map atmost once.
+     * Justification: Implementation of equals have O(n) as iterator iterates through the map of size n atmost once.
      *
      * Space Complexity: O(1)
      * Justification: No extra space is required
@@ -22,7 +22,7 @@ public class CompareMap {
 
     /**
      * Time Complexity: O(n)
-     * Justification: Iterator iterates through the map atmost once.
+     * Justification: Iterator iterates through the map of size n atmost once.
      *
      * Space Complexity: O(1)
      * Justification: No extra space is required
