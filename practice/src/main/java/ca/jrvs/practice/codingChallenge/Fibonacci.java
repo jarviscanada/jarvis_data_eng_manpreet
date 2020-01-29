@@ -7,8 +7,11 @@ package ca.jrvs.practice.codingChallenge;
 public class Fibonacci {
 
     /**
-     * Big-O: O(2^n)
-     * Justification: in this recursive operation, operations are traversed as a tree.
+     * Time Complexity: O(2^n)
+     * Justification: in this recursive operation, operations are traversed as a recussion tree whose complexity is exponential.
+     *
+     * Space Complexity: O(n)
+     * Justification: Length of recursion tree to be n, hence takes n spaces
      */
     public int recursiveFibonacci(int totalNum){
         int result;
@@ -21,8 +24,11 @@ public class Fibonacci {
     }
 
     /**
-     * Big-O: O(n)
+     * Time Complexity: O(n)
      * Justification: the series is traversed only ones
+     *
+     * Space Complexity: O(n)
+     * Justification: Extra space is required.
      */
     public int dynamicFibonacci(int totalNum){
 
