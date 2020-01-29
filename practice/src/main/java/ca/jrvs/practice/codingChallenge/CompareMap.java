@@ -39,14 +39,11 @@ public class CompareMap {
             }
 
             for (Map.Entry<K,V> pair : map1.entrySet()) {
-                if (!map2.containsKey(pair.getKey())) {
-                    return false;
-                }
-                if (!map2.get(pair.getKey()).equals(pair.getValue())) {
-                    return false;
-                }
+                if (map2.containsKey(pair.getKey()) && map2.get(pair.getKey()).equals(pair.getValue())) {
+                    return true;
+                }               
             }
 
-            return true;
+            return false;
     }
 }
