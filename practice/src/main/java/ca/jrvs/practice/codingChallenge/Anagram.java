@@ -49,7 +49,7 @@ public class Anagram {
         int[] counter = new int[26];
         for (int i = 0; i < str1.length(); i++) {
             counter[str1.charAt(i) - 'a']++;
-            counter[str1.charAt(i) - 'a']--;
+            counter[str2.charAt(i) - 'a']--;
         }
         for (int count : counter) {
             if (count != 0)
