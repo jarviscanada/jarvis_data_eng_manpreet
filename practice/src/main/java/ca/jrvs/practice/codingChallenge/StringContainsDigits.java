@@ -2,15 +2,16 @@ package ca.jrvs.practice.codingChallenge;
 
 
 /**
-
  * ticket: https://www.notion.so/Check-if-a-String-contains-only-digits-509549ae9daf42ecbbe73ec21a401759
  */
 public class StringContainsDigits {
 
     /**
-     * Big-O: Time complexity : O(n)
+     * Time complexity : O(n)
      * Justification: the whole string is travered with length n
-     *
+     * 
+     * Space Complexity: O(1)
+     * Justification: No extra space is used.
      **/
     public boolean checkDigitsUsingAscii(String str){
         for(int i=0; i<str.length(); i++){
@@ -21,9 +22,11 @@ public class StringContainsDigits {
     }
 
     /**
-     * Big-O: Time complexity : O(n)
-     * Justification: In the implementation of vaueOf, the whole string is traversed.
+     * Time complexity : O(n)
+     * Justification: In the implementation of valueOf, the whole string is traversed.
      *
+     * Space Complexity: O(1)
+     * Justification: No extra space is used.
      **/
     public boolean checkDigitsUsingApi(String str){
         try{
@@ -35,8 +38,8 @@ public class StringContainsDigits {
     }
 
     /**
-     * Big-O: Time complexity : O(n)
-     * Justification:Running a DFA-compiled regular expression against a string is indeed O(n),
+     * Time complexity : O(n)
+     * Justification: Running a DFA-compiled regular expression against a string is indeed O(n),
      * but can require up to O(2^n) construction time/space (where n = regular expression size).
      *
      **/
