@@ -6,30 +6,33 @@ package ca.jrvs.practice.codingChallenge;
 public class CountPrimes {
 
     /**
-     * Big-O: O()
+     * Time Complexity
      * Justification:
+     *
+     * Space Complexity: O(n)
+     * Justification: extra space of type boolean array with length n is used
      */
     public int countPrimes(int num) {
-        int[] flag = new int[num];
-        int count = 0;
-        if (num <= 1) {
-            throw new IllegalArgumentException("Invalid Imput: Please enter positive number");
+        boolean[] isPrime = new boolean[num];
+        for (int i = 2; i < num; i++) {
+            isPrime[i] = true;
         }
-        for(int i=2; i<=num; i++){
-            for(int j=2; j<=i;j++){
-                if(i!=j){
-                    if(i%j==0){
 
-                    }
-                }
+        //  50
+        for (int i = 2; i * i < num; i++) {
+            if (!isPrime[i]) {
+                continue;
             }
-            flag[i]=1;
+            for (int j = i * i; j < num; j += i) {
+                isPrime[j] = false;
+            }
         }
-        for(int i=2; i<=num; i++){
-            if(flag[i]==1){
+        int count = 0;
+        for (int i = 2; i < num; i++) {
+            if (isPrime[i]) {
                 count++;
             }
         }
-    return count;
+        return count;
     }
 }
