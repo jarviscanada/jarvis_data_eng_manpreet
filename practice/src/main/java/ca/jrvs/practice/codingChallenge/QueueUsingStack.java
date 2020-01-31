@@ -2,6 +2,9 @@ package ca.jrvs.practice.codingChallenge;
 
 import java.util.Stack;
 
+/**
+ * ticket: https://www.notion.so/Implement-Queue-using-Stack-1e0a5b5bbf9f4fa396a138adc7ea6c20
+ */
 public class QueueUsingStack {
     Stack<Integer> s1;
     Stack<Integer> s2;
@@ -12,8 +15,6 @@ public class QueueUsingStack {
         s2 = new Stack<>();
     }
 
-    // 3 2 1
-    // 1 2 3
     /** Push element x to the back of queue. */
     public void push(int x) {
        if (s1.empty()) {
