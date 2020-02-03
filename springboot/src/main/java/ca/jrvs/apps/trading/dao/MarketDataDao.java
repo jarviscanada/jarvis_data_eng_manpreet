@@ -91,7 +91,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         String URI =  String.format(IEX_BATCH_URL, String.join(",", tickers));
 
         try {
-           response = executeHttpGet(URI);
+            response = executeHttpGet(URI);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -102,9 +102,9 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
 
         List<IexQuote> quotes = new ArrayList<>();
         for(String ticker : tickers){
-         quoteString = quotesJson.getJSONObject(ticker).getJSONObject("quote").toString();
-         quote = gson.fromJson(quoteString, IexQuote.class);
-         quotes.add(quote);
+            quoteString = quotesJson.getJSONObject(ticker).getJSONObject("quote").toString();
+            quote = gson.fromJson(quoteString, IexQuote.class);
+            quotes.add(quote);
         }
 
         return quotes;

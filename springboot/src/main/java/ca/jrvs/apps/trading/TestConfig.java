@@ -1,23 +1,18 @@
 package ca.jrvs.apps.trading;
 
-import ca.jrvs.apps.trading.controller.QuoteController;
-import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
-import ca.jrvs.apps.trading.model.domain.IexQuote;
-import ca.jrvs.apps.trading.service.QuoteService;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
 import javax.sql.DataSource;
 
 @Configuration
-public class AppConfig {
-    private Logger logger = LoggerFactory.getLogger(AppConfig.class);
+@ComponentScan(basePackages = {"ca.jrvs.apps.trading.dao", "ca.jrvs.apps.trading.service"})
+public class TestConfig {
 
     @Bean
     public MarketDataConfig marketDataConfig(){
@@ -27,22 +22,6 @@ public class AppConfig {
         return marketDataConfig;
     }
 
-//    @Bean
-//    public MarketDataDao marketDataDao(HttpClientConnectionManager httpClientConnectionManager,
-//                                       MarketDataConfig marketDataConfig){
-//        return new MarketDataDao(httpClientConnectionManager, marketDataConfig);
-//    }
-
-//    @Bean
-//    public QuoteService quoteService(IexQuote iexQuote, MarketDataDao marketDataDao){
-//        return new QuoteService(iexQuote, marketDataDao);
-//    }
-//
-//    @Bean
-//    public QuoteController quoteController(QuoteService quoteService){
-//        return new QuoteController(quoteService);
-//    }
-
     @Bean
     public HttpClientConnectionManager httpClientConnectionManager(){
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
@@ -50,18 +29,15 @@ public class AppConfig {
         cm.setDefaultMaxPerRoute(50);
         return cm;
     }
-
     @Bean
     public DataSource dataSource() {
         String url = System.getenv("PSQL_URL");
         String user = System.getenv("PSQL_USER");
         String password = System.getenv("PSQL_PASSWORD");
-        //Never log your credentials/secrets. Use debugger instead
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(url);
         basicDataSource.setUsername(user);
         basicDataSource.setPassword(password);
         return basicDataSource;
     }
-
 }
