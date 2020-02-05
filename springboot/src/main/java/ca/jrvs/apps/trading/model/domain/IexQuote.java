@@ -1,470 +1,578 @@
 package ca.jrvs.apps.trading.model.domain;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "symbol",
+        "companyName",
+        "primaryExchange",
+        "calculationPrice",
+        "open",
+        "openTime",
+        "close",
+        "closeTime",
+        "high",
+        "low",
+        "latestPrice",
+        "latestSource",
+        "latestTime",
+        "latestUpdate",
+        "latestVolume",
+        "iexRealtimePrice",
+        "iexRealtimeSize",
+        "iexLastUpdated",
+        "delayedPrice",
+        "delayedPriceTime",
+        "extendedPrice",
+        "extendedChange",
+        "extendedChangePercent",
+        "extendedPriceTime",
+        "previousClose",
+        "previousVolume",
+        "change",
+        "changePercent",
+        "volume",
+        "iexMarketPercent",
+        "iexVolume",
+        "avgTotalVolume",
+        "iexBidPrice",
+        "iexBidSize",
+        "iexAskPrice",
+        "iexAskSize",
+        "marketCap",
+        "peRatio",
+        "week52High",
+        "week52Low",
+        "ytdChange",
+        "lastTradeTime",
+        "isUSMarketOpen"
+})
 public class IexQuote {
-    @SerializedName("symbol")
-    @Expose
+
+    @JsonProperty("symbol")
     private String symbol;
-    @SerializedName("companyName")
-    @Expose
+    @JsonProperty("companyName")
     private String companyName;
-    @SerializedName("calculationPrice")
-    @Expose
+    @JsonProperty("primaryExchange")
+    private String primaryExchange;
+    @JsonProperty("calculationPrice")
     private String calculationPrice;
-    @SerializedName("open")
-    @Expose
-    private String open;
-    @SerializedName("openTime")
-    @Expose
-    private String openTime;
-    @SerializedName("close")
-    @Expose
-    private String close;
-    @SerializedName("closeTime")
-    @Expose
-    private String closeTime;
-    @SerializedName("high")
-    @Expose
-    private String high;
-    @SerializedName("low")
-    @Expose
-    private String low;
-    @SerializedName("latestPrice")
-    @Expose
+    @JsonProperty("open")
+    private Object open;
+    @JsonProperty("openTime")
+    private Object openTime;
+    @JsonProperty("close")
+    private Object close;
+    @JsonProperty("closeTime")
+    private Object closeTime;
+    @JsonProperty("high")
+    private Object high;
+    @JsonProperty("low")
+    private Object low;
+    @JsonProperty("latestPrice")
     private String latestPrice;
-    @SerializedName("latestSource")
-    @Expose
+    @JsonProperty("latestSource")
     private String latestSource;
-    @SerializedName("latestTime")
-    @Expose
+    @JsonProperty("latestTime")
     private String latestTime;
-    @SerializedName("latestUpdate")
-    @Expose
+    @JsonProperty("latestUpdate")
     private String latestUpdate;
-    @SerializedName("latestVolume")
-    @Expose
-    private String latestVolume;
-    @SerializedName("volume")
-    @Expose
-    private String volume;
-    @SerializedName("iexRealtimePrice")
-    @Expose
+    @JsonProperty("latestVolume")
+    private Object latestVolume;
+    @JsonProperty("iexRealtimePrice")
     private String iexRealtimePrice;
-    @SerializedName("iexRealtimeSize")
-    @Expose
+    @JsonProperty("iexRealtimeSize")
     private String iexRealtimeSize;
-    @SerializedName("iexLastUpdated")
-    @Expose
+    @JsonProperty("iexLastUpdated")
     private String iexLastUpdated;
-    @SerializedName("delayedPrice")
-    @Expose
-    private String delayedPrice;
-    @SerializedName("delayedPriceTime")
-    @Expose
-    private String delayedPriceTime;
-    @SerializedName("extendedPrice")
-    @Expose
-    private String extendedPrice;
-    @SerializedName("extendedChange")
-    @Expose
-    private String extendedChange;
-    @SerializedName("extendedChangePercent")
-    @Expose
-    private String extendedChangePercent;
-    @SerializedName("extendedPriceTime")
-    @Expose
-    private String extendedPriceTime;
-    @SerializedName("previousClose")
-    @Expose
+    @JsonProperty("delayedPrice")
+    private Object delayedPrice;
+    @JsonProperty("delayedPriceTime")
+    private Object delayedPriceTime;
+    @JsonProperty("extendedPrice")
+    private Object extendedPrice;
+    @JsonProperty("extendedChange")
+    private Object extendedChange;
+    @JsonProperty("extendedChangePercent")
+    private Object extendedChangePercent;
+    @JsonProperty("extendedPriceTime")
+    private Object extendedPriceTime;
+    @JsonProperty("previousClose")
     private String previousClose;
-    @SerializedName("previousVolume")
-    @Expose
-    private String previousVolume;
-    @SerializedName("change")
-    @Expose
+    @JsonProperty("change")
     private String change;
-    @SerializedName("changePercent")
-    @Expose
+    @JsonProperty("changePercent")
     private String changePercent;
-    @SerializedName("iexMarketPercent")
-    @Expose
+    @JsonProperty("volume")
+    private String volume;
+    @JsonProperty("iexMarketPercent")
     private String iexMarketPercent;
-    @SerializedName("iexVolume")
-    @Expose
+    @JsonProperty("iexVolume")
     private String iexVolume;
-    @SerializedName("avgTotalVolume")
-    @Expose
+    @JsonProperty("avgTotalVolume")
     private String avgTotalVolume;
-    @SerializedName("iexBidPrice")
-    @Expose
+    @JsonProperty("iexBidPrice")
     private String iexBidPrice;
-    @SerializedName("iexBidSize")
-    @Expose
+    @JsonProperty("iexBidSize")
     private String iexBidSize;
-    @SerializedName("iexAskPrice")
-    @Expose
+    @JsonProperty("iexAskPrice")
     private String iexAskPrice;
-    @SerializedName("iexAskSize")
-    @Expose
+    @JsonProperty("iexAskSize")
     private String iexAskSize;
-    @SerializedName("marketCap")
-    @Expose
+    @JsonProperty("marketCap")
     private String marketCap;
-    @SerializedName("week52High")
-    @Expose
-    private String week52High;
-    @SerializedName("week52Low")
-    @Expose
-    private String week52Low;
-    @SerializedName("ytdChange")
-    @Expose
-    private String ytdChange;
-    @SerializedName("peRatio")
-    @Expose
+    @JsonProperty("peRatio")
     private String peRatio;
-    @SerializedName("lastTradeTime")
-    @Expose
+    @JsonProperty("week52High")
+    private String week52High;
+    @JsonProperty("week52Low")
+    private String week52Low;
+    @JsonProperty("ytdChange")
+    private String ytdChange;
+    @JsonProperty("lastTradeTime")
     private String lastTradeTime;
-    @SerializedName("isUSMarketOpen")
-    @Expose
+    @JsonProperty("isUSMarketOpen")
     private String isUSMarketOpen;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("symbol")
 
     public String getSymbol() {
         return symbol;
     }
 
+    @JsonProperty("symbol")
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
+    @JsonProperty("companyName")
     public String getCompanyName() {
         return companyName;
     }
 
+    @JsonProperty("companyName")
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 
+    @JsonProperty("primaryExchange")
+    public String getPrimaryExchange() {
+        return primaryExchange;
+    }
+
+    @JsonProperty("primaryExchange")
+    public void setPrimaryExchange(String primaryExchange) {
+        this.primaryExchange = primaryExchange;
+    }
+
+    @JsonProperty("calculationPrice")
     public String getCalculationPrice() {
         return calculationPrice;
     }
 
+    @JsonProperty("calculationPrice")
     public void setCalculationPrice(String calculationPrice) {
         this.calculationPrice = calculationPrice;
     }
 
-    public String getOpen() {
+    @JsonProperty("open")
+    public Object getOpen() {
         return open;
     }
 
-    public void setOpen(String open) {
+    @JsonProperty("open")
+    public void setOpen(Object open) {
         this.open = open;
     }
 
-    public String getOpenTime() {
+    @JsonProperty("openTime")
+    public Object getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(String openTime) {
+    @JsonProperty("openTime")
+    public void setOpenTime(Object openTime) {
         this.openTime = openTime;
     }
 
-    public String getClose() {
+    @JsonProperty("close")
+    public Object getClose() {
         return close;
     }
 
-    public void setClose(String close) {
+    @JsonProperty("close")
+    public void setClose(Object close) {
         this.close = close;
     }
 
-    public String getCloseTime() {
+    @JsonProperty("closeTime")
+    public Object getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(String closeTime) {
+    @JsonProperty("closeTime")
+    public void setCloseTime(Object closeTime) {
         this.closeTime = closeTime;
     }
 
-    public String getHigh() {
+    @JsonProperty("high")
+    public Object getHigh() {
         return high;
     }
 
-    public void setHigh(String high) {
+    @JsonProperty("high")
+    public void setHigh(Object high) {
         this.high = high;
     }
 
-    public String getLow() {
+    @JsonProperty("low")
+    public Object getLow() {
         return low;
     }
 
-    public void setLow(String low) {
+    @JsonProperty("low")
+    public void setLow(Object low) {
         this.low = low;
     }
 
+    @JsonProperty("latestPrice")
     public String getLatestPrice() {
         return latestPrice;
     }
 
+    @JsonProperty("latestPrice")
     public void setLatestPrice(String latestPrice) {
         this.latestPrice = latestPrice;
     }
 
+    @JsonProperty("latestSource")
     public String getLatestSource() {
         return latestSource;
     }
 
+    @JsonProperty("latestSource")
     public void setLatestSource(String latestSource) {
         this.latestSource = latestSource;
     }
 
+    @JsonProperty("latestTime")
     public String getLatestTime() {
         return latestTime;
     }
 
+    @JsonProperty("latestTime")
     public void setLatestTime(String latestTime) {
         this.latestTime = latestTime;
     }
 
+    @JsonProperty("latestUpdate")
     public String getLatestUpdate() {
         return latestUpdate;
     }
 
+    @JsonProperty("latestUpdate")
     public void setLatestUpdate(String latestUpdate) {
         this.latestUpdate = latestUpdate;
     }
 
-    public String getLatestVolume() {
+    @JsonProperty("latestVolume")
+    public Object getLatestVolume() {
         return latestVolume;
     }
 
-    public void setLatestVolume(String latestVolume) {
+    @JsonProperty("latestVolume")
+    public void setLatestVolume(Object latestVolume) {
         this.latestVolume = latestVolume;
     }
 
-    public String getVolume() {
-        return volume;
-    }
-
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
+    @JsonProperty("iexRealtimePrice")
     public String getIexRealtimePrice() {
         return iexRealtimePrice;
     }
 
+    @JsonProperty("iexRealtimePrice")
     public void setIexRealtimePrice(String iexRealtimePrice) {
         this.iexRealtimePrice = iexRealtimePrice;
     }
 
+    @JsonProperty("iexRealtimeSize")
     public String getIexRealtimeSize() {
         return iexRealtimeSize;
     }
 
+    @JsonProperty("iexRealtimeSize")
     public void setIexRealtimeSize(String iexRealtimeSize) {
         this.iexRealtimeSize = iexRealtimeSize;
     }
 
+    @JsonProperty("iexLastUpdated")
     public String getIexLastUpdated() {
         return iexLastUpdated;
     }
 
+    @JsonProperty("iexLastUpdated")
     public void setIexLastUpdated(String iexLastUpdated) {
         this.iexLastUpdated = iexLastUpdated;
     }
 
-    public String getDelayedPrice() {
+    @JsonProperty("delayedPrice")
+    public Object getDelayedPrice() {
         return delayedPrice;
     }
 
-    public void setDelayedPrice(String delayedPrice) {
+    @JsonProperty("delayedPrice")
+    public void setDelayedPrice(Object delayedPrice) {
         this.delayedPrice = delayedPrice;
     }
 
-    public String getDelayedPriceTime() {
+    @JsonProperty("delayedPriceTime")
+    public Object getDelayedPriceTime() {
         return delayedPriceTime;
     }
 
-    public void setDelayedPriceTime(String delayedPriceTime) {
+    @JsonProperty("delayedPriceTime")
+    public void setDelayedPriceTime(Object delayedPriceTime) {
         this.delayedPriceTime = delayedPriceTime;
     }
 
-    public String getExtendedPrice() {
+    @JsonProperty("extendedPrice")
+    public Object getExtendedPrice() {
         return extendedPrice;
     }
 
-    public void setExtendedPrice(String extendedPrice) {
+    @JsonProperty("extendedPrice")
+    public void setExtendedPrice(Object extendedPrice) {
         this.extendedPrice = extendedPrice;
     }
 
-    public String getExtendedChange() {
+    @JsonProperty("extendedChange")
+    public Object getExtendedChange() {
         return extendedChange;
     }
 
-    public void setExtendedChange(String extendedChange) {
+    @JsonProperty("extendedChange")
+    public void setExtendedChange(Object extendedChange) {
         this.extendedChange = extendedChange;
     }
 
-    public String getExtendedChangePercent() {
+    @JsonProperty("extendedChangePercent")
+    public Object getExtendedChangePercent() {
         return extendedChangePercent;
     }
 
-    public void setExtendedChangePercent(String extendedChangePercent) {
+    @JsonProperty("extendedChangePercent")
+    public void setExtendedChangePercent(Object extendedChangePercent) {
         this.extendedChangePercent = extendedChangePercent;
     }
 
-    public String getExtendedPriceTime() {
+    @JsonProperty("extendedPriceTime")
+    public Object getExtendedPriceTime() {
         return extendedPriceTime;
     }
 
-    public void setExtendedPriceTime(String extendedPriceTime) {
+    @JsonProperty("extendedPriceTime")
+    public void setExtendedPriceTime(Object extendedPriceTime) {
         this.extendedPriceTime = extendedPriceTime;
     }
 
+    @JsonProperty("previousClose")
     public String getPreviousClose() {
         return previousClose;
     }
 
+    @JsonProperty("previousClose")
     public void setPreviousClose(String previousClose) {
         this.previousClose = previousClose;
     }
 
-    public String getPreviousVolume() {
-        return previousVolume;
-    }
-
-    public void setPreviousVolume(String previousVolume) {
-        this.previousVolume = previousVolume;
-    }
-
+    @JsonProperty("change")
     public String getChange() {
         return change;
     }
 
+    @JsonProperty("change")
     public void setChange(String change) {
         this.change = change;
     }
 
+    @JsonProperty("changePercent")
     public String getChangePercent() {
         return changePercent;
     }
 
+    @JsonProperty("changePercent")
     public void setChangePercent(String changePercent) {
         this.changePercent = changePercent;
     }
 
+    @JsonProperty("volume")
+    public String getVolume() {
+        return volume;
+    }
+
+    @JsonProperty("volume")
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    @JsonProperty("iexMarketPercent")
     public String getIexMarketPercent() {
         return iexMarketPercent;
     }
 
+    @JsonProperty("iexMarketPercent")
     public void setIexMarketPercent(String iexMarketPercent) {
         this.iexMarketPercent = iexMarketPercent;
     }
 
+    @JsonProperty("iexVolume")
     public String getIexVolume() {
         return iexVolume;
     }
 
+    @JsonProperty("iexVolume")
     public void setIexVolume(String iexVolume) {
         this.iexVolume = iexVolume;
     }
 
+    @JsonProperty("avgTotalVolume")
     public String getAvgTotalVolume() {
         return avgTotalVolume;
     }
 
+    @JsonProperty("avgTotalVolume")
     public void setAvgTotalVolume(String avgTotalVolume) {
         this.avgTotalVolume = avgTotalVolume;
     }
 
+    @JsonProperty("iexBidPrice")
     public String getIexBidPrice() {
         return iexBidPrice;
     }
 
+    @JsonProperty("iexBidPrice")
     public void setIexBidPrice(String iexBidPrice) {
         this.iexBidPrice = iexBidPrice;
     }
 
+    @JsonProperty("iexBidSize")
     public String getIexBidSize() {
         return iexBidSize;
     }
 
+    @JsonProperty("iexBidSize")
     public void setIexBidSize(String iexBidSize) {
         this.iexBidSize = iexBidSize;
     }
 
+    @JsonProperty("iexAskPrice")
     public String getIexAskPrice() {
         return iexAskPrice;
     }
 
+    @JsonProperty("iexAskPrice")
     public void setIexAskPrice(String iexAskPrice) {
         this.iexAskPrice = iexAskPrice;
     }
 
+    @JsonProperty("iexAskSize")
     public String getIexAskSize() {
         return iexAskSize;
     }
 
+    @JsonProperty("iexAskSize")
     public void setIexAskSize(String iexAskSize) {
         this.iexAskSize = iexAskSize;
     }
 
+    @JsonProperty("marketCap")
     public String getMarketCap() {
         return marketCap;
     }
 
+    @JsonProperty("marketCap")
     public void setMarketCap(String marketCap) {
         this.marketCap = marketCap;
     }
 
-    public String getWeek52High() {
-        return week52High;
-    }
-
-    public void setWeek52High(String week52High) {
-        this.week52High = week52High;
-    }
-
-    public String getWeek52Low() {
-        return week52Low;
-    }
-
-    public void setWeek52Low(String week52Low) {
-        this.week52Low = week52Low;
-    }
-
-    public String getYtdChange() {
-        return ytdChange;
-    }
-
-    public void setYtdChange(String ytdChange) {
-        this.ytdChange = ytdChange;
-    }
-
+    @JsonProperty("peRatio")
     public String getPeRatio() {
         return peRatio;
     }
 
+    @JsonProperty("peRatio")
     public void setPeRatio(String peRatio) {
         this.peRatio = peRatio;
     }
 
+    @JsonProperty("week52High")
+    public String getWeek52High() {
+        return week52High;
+    }
+
+    @JsonProperty("week52High")
+    public void setWeek52High(String week52High) {
+        this.week52High = week52High;
+    }
+
+    @JsonProperty("week52Low")
+    public String getWeek52Low() {
+        return week52Low;
+    }
+
+    @JsonProperty("week52Low")
+    public void setWeek52Low(String week52Low) {
+        this.week52Low = week52Low;
+    }
+
+    @JsonProperty("ytdChange")
+    public String getYtdChange() {
+        return ytdChange;
+    }
+
+    @JsonProperty("ytdChange")
+    public void setYtdChange(String ytdChange) {
+        this.ytdChange = ytdChange;
+    }
+
+    @JsonProperty("lastTradeTime")
     public String getLastTradeTime() {
         return lastTradeTime;
     }
 
+    @JsonProperty("lastTradeTime")
     public void setLastTradeTime(String lastTradeTime) {
         this.lastTradeTime = lastTradeTime;
     }
 
+    @JsonProperty("isUSMarketOpen")
     public String getIsUSMarketOpen() {
         return isUSMarketOpen;
     }
 
+    @JsonProperty("isUSMarketOpen")
     public void setIsUSMarketOpen(String isUSMarketOpen) {
         this.isUSMarketOpen = isUSMarketOpen;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

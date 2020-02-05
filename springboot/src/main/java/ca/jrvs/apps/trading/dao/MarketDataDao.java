@@ -2,8 +2,7 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -80,7 +79,8 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         Optional<String> response= null;
         IexQuote quote = null;
         String quoteString = null;
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        ObjectMapper mapper = new ObjectMapper();
 
         //check ticker format
         for (String ticker : tickers){
@@ -103,7 +103,11 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         List<IexQuote> quotes = new ArrayList<>();
         for(String ticker : tickers){
             quoteString = quotesJson.getJSONObject(ticker).getJSONObject("quote").toString();
-            quote = gson.fromJson(quoteString, IexQuote.class);
+            try {
+                quote = mapper.readValue(quoteString, IexQuote.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             quotes.add(quote);
         }
 
@@ -166,7 +170,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     }
 
     @Override
-    public void delete(IexQuote iexQuote) {
+    public void delete(IexQuote iexQuote){
 
     }
 
