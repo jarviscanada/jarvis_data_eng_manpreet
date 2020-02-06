@@ -9,8 +9,8 @@
 # Introduction
  This is an Online security trading REST API Java application built on MVC architecture using micreservices and Spring framework via Springboot for dependency management. This application pulls the market information from IEX cloud and stores the trader and quote information in PostgreSQL database. This application can be accessed by various users by consuming REST API through web browser via swagger.
  
-# Quick Start
-####  Prequiresites
+ # Quick Start
+ ####  Prequiresites
   This application has the following prequiresites:
  *  `CentOS` machine or VM
  *  `Docker`
@@ -18,7 +18,7 @@
  *  `Maven`
  *  `IEX Cloud` account for API token
  *  `Swagger` or `postman`
-#### Docker scritps
+ #### Docker scritps
 We need to set up few environement variables for our application to connect to with PostgreSQL
 
 ```
@@ -28,6 +28,7 @@ PSQL_PASSWORD
 ```
 There are two docker files for our application and PSQL are written to create images of the containers that are being used. Below are the scripts for the set up of both and run the application.
 
+```
 #verify docker network
     docker network ls
     
@@ -64,10 +65,10 @@ There are two docker files for our application and PSQL are written to create im
 Swagger is an open-source software framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful web services. While most users identify Swagger by the Swagger UI tool, the Swagger toolset includes support for automated documentation, code generation, and test-case generation. 
 To run or consume the application, navigate through `http://localhost:8080/swagger-ui.html#/`
 
-![Swagger application](../springboot/assets/swagger.PNG)
+![Swagger application](/assets/swagger.PNG)
 
 # Architecture
-![Architecture](../springboot/assets/architecture.PNG)
+![Architecture](/assets/architecture.PNG)
 
 * **Client Tier**: User Interactive layer which consumes REST API through http requests which is in turn handled by Tomcat server.After the information is processed , servlet will send http responses.
 * **Application tier**: This tier consist 3 layers: controller layer, service layer, and data access layer where the application is developed. This helps in decoupling our application and it is easier to make changes.  This tier maps the http request to corresponding controller method and generate http responses. Following is the explaination of all the tier.
