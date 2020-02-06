@@ -9,8 +9,8 @@
 # Introduction
  This is an Online security trading REST API Java application built on MVC architecture using micreservices and Spring framework via Springboot for dependency management. This application pulls the market information from IEX cloud and stores the trader and quote information in PostgreSQL database. This application can be accessed by various users by consuming REST API through web browser via swagger.
  
- # Quick Start
- ####  Prequiresites
+# Quick Start
+####  Prequiresites
   This application has the following prequiresites:
  *  `CentOS` machine or VM
  *  `Docker`
@@ -18,7 +18,7 @@
  *  `Maven`
  *  `IEX Cloud` account for API token
  *  `Swagger` or `postman`
- #### Docker scritps
+#### Docker scritps
 We need to set up few environement variables for our application to connect to with PostgreSQL
 
 ```
@@ -87,37 +87,37 @@ Swagger is an open-source software framework backed by a large ecosystem of tool
 To run or consume the application, navigate through `http://localhost:8080/swagger-ui.html#/`
 
 #### Quote Controller
-![Quote][…/springboot/assets/postQuote.PNG]
+![Quote][../springboot/assets/postQuote.PNG]
 This endpoint will pull the most recent market data from the IEX cloud with the given ticker and save it to the database. It returns saved quote.
-![Quote][…/springboot/assets/putQuote.PNG]
+![Quote][../springboot/assets/putQuote.PNG]
 This endpoint will pull the most recent market data from the IEX cloud for every quote that exists in the database. It will only update the quotes that are currently in the database.
-![Quote][…/springboot/assets/getQuoteTicker.PNG]
+![Quote][../springboot/assets/getQuoteTicker.PNG]
 This endpoint will get the most recent market data from the IEX cloud with the specified ticker. It will return the market data directly.
-![Quote][…/springboot/assets/getQuote.PNG]
+![Quote][../springboot/assets/getQuote.PNG]
 Returns all the quotes currently stored in the database.
 
 #### Trader Account Controller
-![TA][…/springboot/assets/TApost.PNG]
+![TA][../springboot/assets/TApost.PNG]
 This  will use the trader information in the HTTP request and create a trader with an associated account. It will return the trader's profile and account.
-![TA][…/springboot/assets/TApostlong.PNG]
+![TA][../springboot/assets/TApostlong.PNG]
 Here, the information of the trader is included in the endpoint URL instead of the HTTP request header.
-![TA][…/springboot/assets/TAputwith.PNG]
+![TA][../springboot/assets/TAputwith.PNG]
 This will withdraw the specified amount of fun from the given trader's account.
-![TA][…/springboot/assets/TAput.PNG]
+![TA][../springboot/assets/TAput.PNG]
 This endpoint will deposit the specified amount of funds into a given trader's account and it will return the new account information.
-![TA][…/springboot/assets/TAdelete.PNG]
+![TA][../springboot/assets/TAdelete.PNG]
 This endpoint will delete a trader and the account associated with that trader. 
 #### Order Controller
-![Order][…/springboot/assets/MOpost.PNG]
+![Order][../springboot/assets/MOpost.PNG]
 It submits market order. It will determine whether to buy or sell the security, based on the value given for the position of security. In case of buying the security, a bad HTTP status code will be return if the ask size of this security is smaller than the position required or there is an insufficient fund to buy the security. In case of selling the security, a bad HTTP status code will be return if the owned position of this security is smaller than the given position. Otherwise, if the execution of the market order succeeds, it will return the executed security order.
 #### Dashboard Controller
-![Order][…/springboot/assets/DBtraderprofile.PNG]
+![Order][../springboot/assets/DBtraderprofile.PNG]
 It returs the trader information along with the associated account information for the given trader ID. It will return bad HTTP status code if the given trader ID cannot be found.
-![Order][…/springboot/assets/portfolio.PNG]
+![Order][../springboot/assets/portfolio.PNG]
 It returs all the securities owned by the given trader.  It will return bad HTTP status code if the given trader ID cannot be found.
 
 # Docker Deployment
-![Docker][…/springboot/assets/docker.PNG]
+![Docker][../springboot/assets/docker.PNG]
 Docker is used to manage application deployment. The above diagram shows what's happening behind the scenes when thhow the application is deployed - the Docker daemon builds two new images for the PostgreSQL database and Springboot application components of this project from the postgres and alpine base images retrieved from Docker Hub. It also uses the provided Dockerfiles for each to modify build details. It then instantiates containers for both on a network (trading-net) that allows both to communicate.
 
 # Improvements
