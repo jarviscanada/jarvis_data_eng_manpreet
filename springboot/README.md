@@ -1,9 +1,9 @@
 # Spring Boot Trading REST API
 * [Introduction](#Introduction)
-* [Quick Start](#Quick Start)
+* [Quick Start](#Quick-Start)
 * [Architecture](#Architecture)
-* [REST API Usage](#RestAPI Usage)
-* [Docker Deployment](#Docker Deployment)
+* [REST API Usage](#RestAPI-Usage)
+* [Docker Deployment](#Docker-Deployment)
 * [Improvements](#Improvements)
 
 # Introduction
