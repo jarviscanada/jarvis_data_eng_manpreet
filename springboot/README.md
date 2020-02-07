@@ -88,39 +88,39 @@ To run or consume the application, navigate through `http://localhost:8080/swagg
 
 #### Quote Controller
 Endpointsof this application are as follows
-* POST `/quote/tickerID/{tickerID}`
+* [**POST**] `/quote/tickerID/{tickerID}`
 This endpoint will pull market data from the IEX cloud with the given ticker and save it to the database. It returns saved quote.
-* PUT`/quote/`
+* [**PUT**] `/quote/`
 This will pull the most recent market data from the IEX cloud for every quote that exists in the database. It will only update the quotes that are currently in the database.
-* GET `/quote/iex/tickerID/{tickerId}`
+* [**GET**] `/quote/iex/tickerID/{tickerId}`
 This will get  market data from the IEX cloud with the specified ticker. It will return the market data directly.
-* GET `/quote/dailyList`
+* [**GET**] `/quote/dailyList`
 Returns all the quotes currently stored in the database.
-* PUT `/quote/iexMarketData`
+* [**PUT**] `/quote/iexMarketData`
 This will update the market data information and stores in the database.
 #### Trader Account Controller
-* POST `/trader/`
+* [**POST**] `/trader/`
 This  will use the trader information in the HTTP request and create a trader with an associated account. It will return the trader's profile and account.
-* POST `trader/firstname/{firstname}/lastname/{lastname}/dob/{dob}/country/{country}/email/{email}`
+* [**POST**] `trader/firstname/{firstname}/lastname/{lastname}/dob/{dob}/country/{country}/email/{email}`
 Here, the information of the trader is included in the endpoint URL instead of the HTTP request header.
-* PUT `/trader/withdraw/traderId/{traderId}/amoount/{amount}`
+* [**PUT**] `/trader/withdraw/traderId/{traderId}/amoount/{amount}`
 This will withdraw the specified amount of fun from the given trader's account.
-* PUT `/trader/deposit/traderId/{traderId}/amoount/{amount}`
+* [**PUT**] `/trader/deposit/traderId/{traderId}/amoount/{amount}`
 This endpoint will deposit the specified amount of funds into a given trader's account and it will return the new account information.
-* DELETE `/trader/traderId/{traderID}`
+* [**DELETE**] `/trader/traderId/{traderID}`
 This endpoint will delete a trader and the account associated with that trader. 
 #### Order Controller
-* POST `/order/marketOrder`
+* [**POST**] `/order/marketOrder`
 It submits market order. It will determine whether to buy or sell the security, based on the value given for the position of security. In case of buying the security, a bad HTTP status code will be return if there is an insufficient fund to buy the security. In case of selling the security, a bad HTTP status code will be return again if there is insuffient fund to sell which is asked by the another trader. Otherwise, if the execution of the market order succeeds, it will return the executed security order.
 #### Dashboard Controller
-* GET `/dashboard/profile/traderId/{traderId}`
+* [**GET**] `/dashboard/profile/traderId/{traderId}`
 It returs the trader information along with the associated account information for the given trader ID.
-* GET `/dashboard/portfolio/traderId/{traderId}`
+* [**GET**] `/dashboard/portfolio/traderId/{traderId}`
 It returs all the securities owned by the given trader.
 
 # Docker Deployment
 ![Docker](/springboot/assets/Capture.PNG)
-Docker is used to manage application deployment. The above diagram shows what's happening behind the scenes when thhow the application is deployed - the Docker daemon builds two new images for the PostgreSQL database and Springboot application components of this project from the postgres and alpine base images retrieved from Docker Hub. It also uses the provided Dockerfiles for each to modify build details. It then instantiates containers for both on a network (trading-net) that allows both to communicate.
+Docker is used to manage application deployment. The above diagram shows the working of docker deployment at the backend. This application has 2 containers: one psql and another the application container. To make this application run, it is necessary for both of these containers to communicate. So, created a network within which both communicate. To assemble the images of psql, base image from dockerhub is used and other scripts that  initialise the database. Similarly, to assemble the image of application, used base image of jdk and maven and run my own scripts to package up the application.
 
 # Improvements
 1. This application doesn't have its own UI as an open source application, Swagger provides minimal User Interface. Hence, a UI can be designed and developed to make this app more user friendly.
