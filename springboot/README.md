@@ -1,10 +1,10 @@
 # Spring Boot Trading REST API
-* ![Introduction](#Introduction)
-* ![Quick Start](#Quick Start)
-* ![Architecture](#Architecture)
-* ![REST API Usage](#RestAPI Usage)
-* ![Docker Deployment](#Docker Deployment)
-* ![Improvements](#Improvements)
+* [Introduction](#Introduction)
+* [Quick Start](#Quick Start)
+* [Architecture](#Architecture)
+* [REST API Usage](#RestAPI Usage)
+* [Docker Deployment](#Docker Deployment)
+* [Improvements](#Improvements)
 
 # Introduction
  This is an Online security trading REST API Java application built on MVC architecture using microservices and  Springboot for dependency management. This application can help trader to buy and sell stock.It pulls the market information from IEX cloud and stores the trader's and quote information in PostgreSQL database. This application can be accessed by various users by consuming REST API through web browser via swagger or by other open source applcations al well like postman.
