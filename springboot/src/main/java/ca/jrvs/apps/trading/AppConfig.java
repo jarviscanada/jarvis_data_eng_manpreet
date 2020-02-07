@@ -27,22 +27,6 @@ public class AppConfig {
         return marketDataConfig;
     }
 
-//    @Bean
-//    public MarketDataDao marketDataDao(HttpClientConnectionManager httpClientConnectionManager,
-//                                       MarketDataConfig marketDataConfig){
-//        return new MarketDataDao(httpClientConnectionManager, marketDataConfig);
-//    }
-
-//    @Bean
-//    public QuoteService quoteService(IexQuote iexQuote, MarketDataDao marketDataDao){
-//        return new QuoteService(iexQuote, marketDataDao);
-//    }
-//
-//    @Bean
-//    public QuoteController quoteController(QuoteService quoteService){
-//        return new QuoteController(quoteService);
-//    }
-
     @Bean
     public HttpClientConnectionManager httpClientConnectionManager(){
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
@@ -56,7 +40,6 @@ public class AppConfig {
         String url = System.getenv("PSQL_URL");
         String user = System.getenv("PSQL_USER");
         String password = System.getenv("PSQL_PASSWORD");
-        //Never log your credentials/secrets. Use debugger instead
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(url);
         basicDataSource.setUsername(user);
