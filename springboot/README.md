@@ -18,14 +18,21 @@
  *  `Maven`
  *  `IEX Cloud` account for API token
  *  `Swagger` or `postman`
-#### Docker scritps
-We need to set up few environement variables for our application to connect to with PostgreSQL
+#### Docker scripts
+First we need to build the 2 images from our docker file. 
+The Psql image is created by the following commands:
+```
+cd ./springboot/psql
+docker build -t trading-psl .  #docker builds ./Dockerfile by default
+docker image ls -f reference=trading-psl
+```
+Similarily we can create the Java application image by the following commands:
+```
+cd ./springboot/
+docker build -t trading-app . #docker builds ./Dockerfile by default
+docker image ls -f reference=trading-app
+```
 
-```
-PSQL_URL
-PSQL_USER
-PSQL_PASSWORD
-```
 This application has 2 containers: one psql and another the application container. To make this application run, it is necessary for both of these containers to communicate. So, created a network within which both communicate. To assemble the images of psql, base image from dockerhub is used and other scripts that  initialise the database. Similarly, to assemble the image of application, used base image of jdk and maven and run my own scripts to package up the application.
 ```
 #verify docker network
@@ -52,7 +59,7 @@ This application has 2 containers: one psql and another the application containe
     -e "PSQL_PASSWORD=password" \
     -e "IEX_PUB_TOKEN=${IEX_PUB_TOKEN}" \
     --network trading-net \
-    -p 5000:5000 -t trading-app
+    -p 8080:8080 -t trading-app
     
     #list running containers
     # two running docker containers after ruunning below command
