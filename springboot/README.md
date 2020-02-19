@@ -69,15 +69,15 @@ To run or consume the application, navigate through `http://localhost:8080/swagg
 # Architecture
 ![Architecture](/springboot/assets/architecture.PNG)
 
-User Interactive layer is a client layer which consumes REST API through http requests which is in turn handled by Tomcat server. After the information is processed, web server will send http responses to the client. 
+User Interactive layer is a **Client layer** which consumes REST API through http requests which is in turn handled by Tomcat server. After the information is processed, web server will send http responses to the client. 
 
-Another Application layer consists 3 main sub-layers: controller layer, service layer, and data access layer where the application is developed. This helps in decoupling our application and it is easier to make changes.  This tier maps the http request to corresponding controller method and generate http responses. Following is the explaination of all the tier.	
+Another **Application layer** consists 3 main sub-layers: controller layer, service layer, and data access layer where the application is developed. This helps in decoupling our application and it is easier to make changes.  This tier maps the http request to corresponding controller method and generate http responses. Following is the explaination of all the tier.	
 	
-    * **Springboot**:It is an open-source framework that consists of Spring MVC features (IOC), auto-configurations and embedded tomcat server. It is best ready to use the micro services platform.	 	
+**Springboot**:It is an open-source framework that consists of Spring MVC features (IOC), auto-configurations and embedded tomcat server. It is best ready to use the micro services platform.	 	
 
-    * **Controller Layer**: It receives the HTTP request and servlet will map the request to the method in the controller, and the controller is responsible for invoking the corresponding method in the service layer. This application has 4 controllers.    
+**Controller Layer**: It receives the HTTP request and servlet will map the request to the method in the controller, and the controller is responsible for invoking the corresponding method in the service layer. This application has 4 controllers.    
 
-    * **Service Layer**: This layer implements the business logic provided. Each implemented method will be invoked by its corresponding controller. However, it will only invoke the DAO layer only if there is no error.    
+**Service Layer**: This layer implements the business logic provided. Each implemented method will be invoked by its corresponding controller. However, it will only invoke the DAO layer only if there is no error.    
 
 **Dao layer** will interact with the database tire and its responsibility is to insert, find, update or delete a row in the database. Moreover, it will also be able to pull market data from the IEX cloud. The DAO (data access object) is designed based on a repository pattern. Each DAO is responsible for one table in the database and uses the model created for its corresponding table.
 
