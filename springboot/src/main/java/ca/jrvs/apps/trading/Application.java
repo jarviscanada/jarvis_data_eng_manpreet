@@ -24,8 +24,6 @@ public class Application implements CommandLineRunner {
     @Value("$app.init.dailyList")
     private String[] initDailyList;
 
-//    @Autowired
-//    private QuoteService quoteService;
     @Autowired
     private QuoteController quoteController;
 

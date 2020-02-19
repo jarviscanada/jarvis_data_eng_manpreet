@@ -137,15 +137,12 @@ public class QuoteDao implements CrudRepository<Quote, String> {
     //disable
     @Override
     public void delete(Quote quote) {
-
     }
 
     //disable
     @Override
     public void deleteAll(Iterable<? extends Quote> iterable) {
-
     }
-
 
     @Override
     public void deleteAll() {

@@ -79,7 +79,6 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         Optional<String> response= null;
         IexQuote quote = null;
         String quoteString = null;
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         ObjectMapper mapper = new ObjectMapper();
 
         //check ticker format
@@ -123,7 +122,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         //Creating a HttpGet object
         HttpGet httpget = new HttpGet(uri);
 
-         // Execute the HTTP Request
+        // Execute the HTTP Request
         HttpResponse httpresponse = httpClient.execute(httpget);
 
         if (httpresponse.getStatusLine().getStatusCode() != HTTP_OK) {
