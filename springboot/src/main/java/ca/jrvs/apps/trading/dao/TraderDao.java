@@ -42,6 +42,10 @@ public class TraderDao extends JdbcCrudDao<Trader>{
         return Trader.class;
     }
 
+    /**
+     * update trader information by trader id
+     * @param traderID
+     */
     @Override
     public int updateOne(Trader trader) {
         String updateSQL = "UPDATE "+ TABLE_NAME + " SET first_name=?, last_name=?, dob=?, "

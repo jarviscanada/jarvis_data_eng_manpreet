@@ -52,6 +52,10 @@ public class AccountDao extends JdbcCrudDao<Account>{
         return save(account);
     }
 
+    /**
+     * finds account by trader id
+     * @param traderID
+     */
     public Optional<Account> findAccountByTraderID(Integer traderID){
         Optional<Account> entity = Optional.empty();
         String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + TRADER_ID_COLUMN +  "= " + traderID + "";
@@ -64,6 +68,10 @@ public class AccountDao extends JdbcCrudDao<Account>{
         return entity;
     }
 
+    /**
+     * update amount by account id
+     * @param entity
+     */
     @Override
     public int updateOne(Account entity) {
         String updateSQL = "UPDATE " + getTABLE_NAME() + " SET amount=? WHERE id=?";

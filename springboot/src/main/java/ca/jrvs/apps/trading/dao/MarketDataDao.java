@@ -119,10 +119,8 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         URI uri = new URI(url.toString());
         HttpClient httpClient = getHttpClient();
 
-        //Creating a HttpGet object
         HttpGet httpget = new HttpGet(uri);
 
-        // Execute the HTTP Request
         HttpResponse httpresponse = httpClient.execute(httpget);
 
         if (httpresponse.getStatusLine().getStatusCode() != HTTP_OK) {

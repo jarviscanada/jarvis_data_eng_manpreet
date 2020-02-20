@@ -57,6 +57,10 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         }
     }
 
+    /**
+     * update quote information
+     * @param quote
+     */
     private int updateOne(Quote quote){
         String updateSQL = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?, "
                 + "ask_price=?, ask_size=? WHERE ticker=?";
@@ -76,6 +80,10 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         return quotesOut;
     }
 
+    /**
+     * finds quote by quote id
+     * @param ticker
+     */
     @Override
     public Optional<Quote> findById(String ticker) {
         String selectSql = "SELECT * FROM " + TABLE_NAME + " where ticker = '" + ticker + "'";
@@ -90,6 +98,10 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
     }
 
+    /**
+     * check if quote exists by ticker
+     * @param ticker
+     */
     @Override
     public boolean existsById(String ticker) {
         String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE ticker = '" + ticker + "'";
@@ -103,6 +115,9 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         }
     }
 
+    /**
+     * finds all quotes
+     */
     @Override
     public List<Quote> findAll() {
         String selectSql = "SELECT * FROM " + TABLE_NAME;
@@ -117,6 +132,9 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         return null;
     }
 
+    /**
+     * count all quotes
+     */
     @Override
     public long count() {
         long count = 0;
@@ -124,6 +142,10 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
+    /**
+     * delete quote by ticker
+     * @param ticker
+     */
     @Override
     public void deleteById(String ticker) {
         if (ticker == null) {
@@ -144,6 +166,9 @@ public class QuoteDao implements CrudRepository<Quote, String> {
     public void deleteAll(Iterable<? extends Quote> iterable) {
     }
 
+    /**
+     * delete all quotes
+     */
     @Override
     public void deleteAll() {
         String deleteSql = "DELETE FROM " + TABLE_NAME ;

@@ -51,6 +51,7 @@ public class PositionDao extends JdbcCrudDao<Position>{
         return Position.class;
     }
 
+
     public Optional<Position> getByAccountIdAndTicker(Integer accountId, String ticker) {
         Optional<Position> entity = Optional.empty();
         String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "= " + accountId +
@@ -65,6 +66,10 @@ public class PositionDao extends JdbcCrudDao<Position>{
         return entity;
     }
 
+    /**
+     * finds position by account ID by trader id
+     * @param accountID
+     */
     public List<Position> findPositionByAccountID(Integer accountID){
         List<Position> entities = null;
         String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "= " + accountID ;

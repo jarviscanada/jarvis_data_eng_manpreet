@@ -29,6 +29,10 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
                 .withTableName(TABLE_NAME).usingGeneratedKeyColumns(ID_COLUMN));
     }
 
+    /**
+     * update security order by security order id
+     * @param security Order
+     */
     @Override
     public int updateOne(SecurityOrder securityOrder) {
         String updateSQL = "UPDATE " + getTableName() + " SET account_id=?, status=?, ticker=?, size=?, price=?, "
