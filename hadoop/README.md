@@ -34,12 +34,3 @@
 1. More comparisons can be done between columnar file formats with parquets format.
 2. Perfomances can be compared for both columnar format approach and spark approach.
 3. Project can be extended by manipulating data more and making more comparisons
-
-
-
-
-
-
-
-
-
