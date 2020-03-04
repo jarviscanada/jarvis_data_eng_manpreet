@@ -8,7 +8,7 @@
  This project processes data using Apache Hadoop and evaluate different tools. It helped me understanding the core concepts of HDFS, MapReduce and hive. Google CLoud Platform is used build hadoop cluster: master node and slave node. YARN manages both the nodes. User is able to connect with hive server by CLI via beeline or by Zeppelin Notebook. Data within google storage is first written to HDFS and is manupilated using HiveQL.
  
  # Hadoop Cluster
-[Architecture](/hadoop/assets/architecture.PNG)
+![Architecture](/hadoop/assets/architecture.PNG)
  ## Big Data Tools
  * **HDFS** (Hadoop Distributed File System): The Hadoop Distributed File System (HDFS) is the primary data storage system used by Hadoop applications. It employs a NameNode and DataNode architecture to implement a distributed file system that provides high-performance access to data across highly scalable Hadoop clusters.
     * **NameNode** (The Master Node): It is the master daemon that maintains and manages the DataNodes (slave nodes). It records the metadata of all the files stored in the cluster, e.g. The location of blocks stored, the size of the files, permissions, hierarchy, etc.
@@ -28,7 +28,7 @@
  # Hive Project
  In this project, first, data is loaded to HDFS from Google Platform, That data is manipulated or optimised using HiveQL queries and later, the comparisons are made via different ways of processing it. Below screenshots well explains the steps taken to complete it.
  
- [Project](/hadoop/assets/project.PNG)
+![Project](/hadoop/assets/project.PNG)
 
 # Improvements
 1. More comparisons can be done between columnar file formats with parquets format.
