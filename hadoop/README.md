@@ -1,4 +1,4 @@
-# Spring Boot Trading REST API
+# Hadoop Project
 * [Introduction](#Introduction)
 * [Hadoop Cluster](#HadoopCluster)
 * [Hive Project](#HiveProject)
