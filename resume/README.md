@@ -2,9 +2,12 @@
 # Manpreet Kaur . Jarvis Consulting
 
 I recently graduated from Humber College where I completed a Post-Graduate Certificate in Information Technology Solutions. Prior to pursuing a career in information technology, I was able to gain work experience as an I.T. Process Consultant where I utilized my strengths and skillsets in service management. This professional experience empowered me to pursue a career in information technology solutions. As a result, my career path has led me to pursue an opportunity and work as an Associate Data Engineer at Jarvis Consulting. Additionally, when I'm not working, I am also passionate about music, building software and all things vegetarian food. I also love playing sports, especially volleyball which enables me to utilize my passion for social interactions and teamwork. Going forward, I aim to enhance my skills as IT professional and grow my network.
+
 ## Skills
 **Proficient:** Java, Bash, SQL, Agile/Scrum, SpringBoot, Hadoop, Git, HTML and Web services
+
 **Competent:** Spark/Scala, Node.JS, C#,ASP.NET MVC, JSP, Servlets and Cloud (Amazon Web services)
+
 **Familiar:** JavaScript, React, XML, CSS, Hibernate and EJB
 
 ## Development Projects
@@ -21,12 +24,14 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_manpreet/]
 -   **Spark/Scala**: Completed Spark/Scala project that processes data using Apache Spark and Scala. There are two Zeppelin notebooks that perform data processing on Online Retail dataset using RDDs and Structured APIs. I used Spark/Scala to analyze retail dataset. Using this dataset, I performed basic analysis through questionnaire on this dataset using RDDs and Structured APIs.
 
 -   **Clou****d & Dev****Ops:** `In progress` Deploying my Springboot application over AWS cloud using its capabilities like Auto scaling, load balancers, Elastic beanstalk etc.
+
 ## Professional Experiences
 **Associate Data Engineer @ Jarvis Consulting Group, Toronto (**2018-Present**):** Working as an Associate Data Engineer on projects including Core Java Applications, Hadoop, Spark and Cloud projects. Responsible for fulfilling project requirements at the discretion of the product owner through Agile team methodologies.
 
 **Senior Analyst @ HCL Technologies, Noida (**2015-2017**):** Worked as Senior Analyst to take the responsibility for closely monitoring critical priority incidents and followed the global Service Restoration Process Management by involving third party vendors. Also, Ensured that Impact Assessment of the changes is carried out keeping all possible impacts in mind to stabilize the Business Systems. For example: Technical, Non-Technical, people, cost and risk management in operations providing solutions. Audited and maintained quality of incidents to meet customer satisfaction.
 
 **Web Developer Intern @ Ramy Infotech Pvt. Ltd., Noida (**2014**):** Worked as a Web Developer Intern to implement few small front end modules for company's projects called Domestic Staffing System to help recruiters maximize efficiencies through Java Struts. Learned core concepts of Java and implemented basic frontend modules on HTML, CSS.
+
 ## Education & Academic Projects
 **Humber College Institute of Technology & Advanced Learning:** Post Graduate Certificate Major: Information Technology Solutions (2018-2019)
 
@@ -40,4 +45,5 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_manpreet/]
 
 ## Certificates & Awards & Activities
  ITIL Service Transition (ITIL-ST) - AXELOS Global Best Practice (2018)
+
  ITIL Foundation - AXELOS Global Best Practice (2016)
