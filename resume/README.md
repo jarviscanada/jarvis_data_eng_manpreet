@@ -23,7 +23,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_manpreet/]
 
 -   **Spark/Scala**: Completed Spark/Scala project that processes data using Apache Spark and Scala. There are two Zeppelin notebooks that perform data processing on Online Retail dataset using RDDs and Structured APIs. I used Spark/Scala to analyze retail dataset. Using this dataset, I performed basic analysis through questionnaire on this dataset using RDDs and Structured APIs.
 
--   **Clou****d & Dev****Ops:** `In progress` Deploying my Springboot application over AWS cloud using its capabilities like Auto scaling, load balancers, Elastic beanstalk etc.
+-   **Cloud & DevOps:** `In progress` Deploying my Springboot application over AWS cloud using its capabilities like Auto scaling, load balancers, Elastic beanstalk etc.
 
 ## Professional Experiences
 **Associate Data Engineer @ Jarvis Consulting Group, Toronto (**2018-Present**):** Working as an Associate Data Engineer on projects including Core Java Applications, Hadoop, Spark and Cloud projects. Responsible for fulfilling project requirements at the discretion of the product owner through Agile team methodologies.
