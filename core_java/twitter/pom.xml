@@ -53,7 +53,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>2.2.2.RELEASE</version>
+      <version>2.5.12</version>
     </dependency>
 
     <dependency>
